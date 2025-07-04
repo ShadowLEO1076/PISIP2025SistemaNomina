@@ -1,0 +1,97 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "NominaPISIBContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "C:\\LENGUAJES\\C#\\PISIBSistemaNomina\\NominaPISIB.Dominio.Modelos\\Entidades",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "NominaPISIB.Infraestructura.AccesoDatos",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[AprobacionVacaciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Asistencias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Bonificaciones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Contratos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ContratosTipo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Descuentos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Empleados]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[EmpleadosVacacionesTotales]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Inasistencias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Licencias]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Nominas]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Puestos]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SolicitudVacaciones]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}
