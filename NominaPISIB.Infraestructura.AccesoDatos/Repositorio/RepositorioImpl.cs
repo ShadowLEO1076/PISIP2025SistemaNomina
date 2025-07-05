@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NominaPISIB.Dominio.Modelos.Abstracciones;
-
 namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 {
     public class RepositorioImpl<T> : IRepository<T> where T : class

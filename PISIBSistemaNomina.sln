@@ -31,7 +31,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NominaPISIB.Infraestructura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NominaPISIB.Infraestructura.ExternalService", "NominaPISIB.Infraestructura.ExternalService\NominaPISIB.Infraestructura.ExternalService.csproj", "{2856C3A2-E817-443E-B901-72B38D1A44F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLEO", "TestLEO\TestLEO.csproj", "{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLeo", "TestLEO\TestLeo.csproj", "{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMateo", "TestMateo\TestMateo.csproj", "{6093C867-2D6D-0601-5BB3-065C2BC5277C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,10 @@ Global
 		{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6093C867-2D6D-0601-5BB3-065C2BC5277C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6093C867-2D6D-0601-5BB3-065C2BC5277C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6093C867-2D6D-0601-5BB3-065C2BC5277C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6093C867-2D6D-0601-5BB3-065C2BC5277C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +100,7 @@ Global
 		{5520B652-3BC9-49E2-A50E-186FB230AF6C} = {0E2F90AE-B6D3-4434-85BD-30B4EEE070C3}
 		{2856C3A2-E817-443E-B901-72B38D1A44F2} = {0E2F90AE-B6D3-4434-85BD-30B4EEE070C3}
 		{6BDA914C-9ED3-46BF-8B8D-A7C8035098E9} = {DF1B09D2-4CE9-46A3-A05E-1A8813DAED1C}
+		{6093C867-2D6D-0601-5BB3-065C2BC5277C} = {DF1B09D2-4CE9-46A3-A05E-1A8813DAED1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEB29431-09E1-4CC8-ACF7-EC5614A14431}

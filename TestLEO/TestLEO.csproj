@@ -18,6 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NominaPISIB.Aplicacion\NominaPISIB.Aplicacion.csproj" />
+    <ProjectReference Include="..\NominaPISIB.Dominio.Modelos\NominaPISIB.Dominio.Modelos.csproj" />
+    <ProjectReference Include="..\NominaPISIB.Dominio.Servicios\NominaPISIB.Dominio.Servicios.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
