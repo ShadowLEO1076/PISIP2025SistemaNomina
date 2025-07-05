@@ -7,7 +7,9 @@ using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
-    public interface IAprobacionVacacionesRepo : IRepository<AprobacionVacaciones>
+    public interface IAprobacionVacacionesRepo : IRepository<AprobacionVacaciones> 
     {
+
+       
     }
 }
