@@ -11,5 +11,10 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
     public interface IEmpleadosRepo : IRepository<Empleados>
     {
         public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
+
+        // aqui voy agregregar lo de arriba pero enfocado para ReporteNominaMensualDTO
+
+        public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
+
     }
 }
