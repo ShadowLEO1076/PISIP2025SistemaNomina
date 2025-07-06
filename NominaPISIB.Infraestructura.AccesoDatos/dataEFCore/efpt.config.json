@@ -6,7 +6,7 @@
    "IncludeConnectionString": true,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "C:\\LENGUAJES\\C#\\PISIBSistemaNomina\\NominaPISIB.Dominio.Modelos\\Entidades",
+   "OutputPath": "C:\\LENGUAJES\\C#\\PISIPSistemaNomina\\NominaPISIB.Dominio.Modelos\\Entidades",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "NominaPISIB.Infraestructura.AccesoDatos",
    "Schemas": null,
