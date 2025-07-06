@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NominaPISIB.Infraestructura.AccesoDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace NominaPISIB.Aplicacion.Servicios
 {
     [ServiceContract]
-    public interface IPuestosServicio
+    public interface IPuestosServicio : IService<Puestos> 
     {
         [OperationContract]
         Task<bool> RegistrarPuestoAsync(string nombrePuesto, string descripcion, decimal salarioBase);
