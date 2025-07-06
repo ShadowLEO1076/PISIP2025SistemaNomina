@@ -12,13 +12,12 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
     {
         public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
 
-<<<<<<< HEAD
+
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
-=======
+
         // aqui voy agregregar lo de arriba pero enfocado para ReporteNominaMensualDTO
 
         public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 
->>>>>>> 32a573b7c3e097180a9624f5b756580afac25ef2
     }
 }
