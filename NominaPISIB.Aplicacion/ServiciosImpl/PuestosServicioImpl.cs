@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class PuestosServicioImpl : IPuestosServicio
+    public class PuestosServicioImpl : ServicioImpl<Puestos>, IPuestosServicio
     {
+        public PuestosServicioImpl(NominaPISIBContext context) : base(context)
+        {
+        }
+
         public Task<bool> ActualizarPuestoAsync(int puestoId, string nuevoNombrePuesto, string nuevaDescripcion, decimal nuevoSalarioBase)
         {
             throw new NotImplementedException();

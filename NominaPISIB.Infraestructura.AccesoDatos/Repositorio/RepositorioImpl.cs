@@ -34,7 +34,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         public async Task DeleteAsync(T entity)
         {
             try
-            {
+            {  
                 _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
