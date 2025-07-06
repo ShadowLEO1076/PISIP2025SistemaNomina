@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Infraestructura.AccesoDatos;
+using NominaPISIB.Aplicacion.DTO.DTOs;
+
 namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
     public interface IEmpleadosRepo : IRepository<Empleados>
     {
+        public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
     }
 }
