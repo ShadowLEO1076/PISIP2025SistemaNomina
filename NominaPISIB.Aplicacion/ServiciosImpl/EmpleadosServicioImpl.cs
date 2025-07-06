@@ -3,17 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NominaPISIB.Aplicacion.DTO.DTOs;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Dominio.Modelos.Abstracciones;
 using NominaPISIB.Infraestructura.AccesoDatos;
+using NominaPISIB.Infraestructura.AccesoDatos.Repositorio;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
     public class EmpleadosServicioImpl: ServicioImpl<Empleados>, IEmpleadosServicio
     {
+        private IEmpleadosRepo _repo;
         public EmpleadosServicioImpl(NominaPISIBContext context) : base(context)
         {
+            this._repo = new EmpleadosRepoImpl(context);
         }
 
+        public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados()
+        {
+            return _repo.ObtenerContratoActivoEmpleados();
+        }
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();
@@ -39,17 +48,20 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
+       
+
         public Task<string> ObtenerDetallesEmpleadoAsync(int empleadoId)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<string>> ObtenerEmpleadosAsync()
+
+        public Task<bool> RegistrarEmpleadoAsync(string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> RegistrarEmpleadoAsync(string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
+        public Task<IEnumerable<string>> ObtenerEmpleadosAsync()
         {
             throw new NotImplementedException();
         }
