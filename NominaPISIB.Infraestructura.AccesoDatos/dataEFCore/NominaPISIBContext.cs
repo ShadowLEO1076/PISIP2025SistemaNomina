@@ -45,16 +45,10 @@ public partial class NominaPISIBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-<<<<<<< HEAD
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;");
-        //("Data Source=(localdb)\\leo;Initial Catalog=NominaPisip;Integrated Security=True");
 
-    //optionsBuilder.UseSqlServer("Data Source=MATRIX\\LOCALDB#5CE7225A;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;");
+         //=> optionsBuilder.UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;");
+         => optionsBuilder.UseSqlServer("Data Source=(localdb)\\leo;Initial Catalog=NominaPisip;Integrated Security=True;Encrypt=True");
 
-
-=======
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\leo;Initial Catalog=NominaPisip;Integrated Security=True;Encrypt=True");
->>>>>>> 0eff16eb84e6d90a0a6acb685f9082cd783fd4bd
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
