@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Aplicacion.ServiciosImpl;
 using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace TestMateo
@@ -6,6 +8,7 @@ namespace TestMateo
     public class Tests
     {
         private NominaPISIBContext _context;
+        private IPuestosServicio _puestosServ; 
 
         [SetUp]
         public void Setup()
@@ -14,12 +17,16 @@ namespace TestMateo
             var opcion = new DbContextOptionsBuilder<NominaPISIBContext>().UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;")
                 .Options;
             _context = new NominaPISIBContext( opcion );
+            _puestosServ = new PuestosServicioImpl( _context );
         }
 
         [Test]
-        public void Test1()
+        public async Task Test1()
         {
-            Assert.Pass();
+            var puestoPrueba = new Puestos { idPuesto = 1 , PuestoNombre = "INGENIERO EN SISTEMAS", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
+
+            await _puestosServ.UpdateAsync( puestoPrueba );
+            //Assert.Pass();
         }
 
         [TearDown]

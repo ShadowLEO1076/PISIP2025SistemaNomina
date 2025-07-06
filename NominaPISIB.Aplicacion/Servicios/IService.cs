@@ -18,7 +18,7 @@ namespace NominaPISIB.Aplicacion.Servicios
         Task UpdateAsync(T entity); //Encargada de actualizar un registro dentro de una tabla. A saber cómo lo logra
 
         [OperationContract]
-        Task DeleteAsync(int id); //Encargada de eliminar un registro de la tabla siempre que se sepa su id.
+        Task DeleteAsync(T entity); //Encargada de eliminar un registro de la tabla siempre que se sepa su id.
 
         [OperationContract]
         Task<IEnumerable<T>> GetAllAsync(); //Encargada de traer todos los registros de la tabla.
