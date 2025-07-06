@@ -19,6 +19,8 @@ public partial class Contratos
 
     public decimal ContratoSalario { get; set; }
 
+    public bool? EstadoContrato { get; set; }
+
     public virtual ContratosTipo FKidContratoTipoNavigation { get; set; }
 
     public virtual Empleados FKidEmpleadoNavigation { get; set; }
