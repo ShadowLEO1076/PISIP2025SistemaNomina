@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
@@ -14,7 +15,27 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
+        public Task AddAsync(Asistencias entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DeleteAsync(Asistencias entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> EliminarAsistenciaAsync(int asistenciaId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<Asistencias>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Asistencias> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
@@ -55,6 +76,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
         public Task<bool> RegistrarAsistenciaAsync(int empleadoId, DateTime fechaHoraEntrada, DateTime fechaHoraSalida)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateAsync(Asistencias entity)
         {
             throw new NotImplementedException();
         }

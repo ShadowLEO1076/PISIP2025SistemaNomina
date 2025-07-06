@@ -4,11 +4,12 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.Servicios
 {
     [ServiceContract]
-    public interface IDescuentosServicio
+    public interface IDescuentosServicio : IService<Descuentos>
     {
         [OperationContract]
         Task<bool> RegistrarDescuentoAsync(int empleadoId, decimal monto, string motivo, DateTime fecha);

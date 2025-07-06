@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class EmpleadosServicioImpl : IEmpleadosServicio
+    public class EmpleadosServicioImpl: ServicioImpl<Empleados>, IEmpleadosServicio
     {
+        public EmpleadosServicioImpl(NominaPISIBContext context) : base(context)
+        {
+        }
+
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();

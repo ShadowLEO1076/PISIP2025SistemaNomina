@@ -4,12 +4,13 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 
-namespace NominaPISIB.Aplicacion.Servicios
+namespace NominaPISIB.Aplicacion.Servicios 
 {
     [ServiceContract]
-    public interface IContratosTipoServicio
+    public interface IContratosTipoServicio : IService<ContratosTipo>
     {
         [OperationContract]
         Task<bool> RegistrarContratoAsync(int empleadoId, string tipoContrato, DateTime fechaInicio, DateTime fechaFin);

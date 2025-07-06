@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class DescuentosServicioImpl : IDescuentosServicio
+    public class DescuentosServicioImpl : ServicioImpl<Descuentos>, IDescuentosServicio
     {
+        public DescuentosServicioImpl(NominaPISIBContext context) : base(context)
+        {
+        }
+
         public Task<bool> ActualizarDescuentoAsync(int descuentoId, decimal nuevoMonto, string nuevoMotivo, DateTime nuevaFecha)
         {
             throw new NotImplementedException();

@@ -7,7 +7,7 @@ using NominaPISIB.Aplicacion.Servicios;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class EmpleadosVacacionesTotalesServicioImpl : IEmpleadosVacacionesTotalesServicio
+    public class EmpleadosVacacionesTotalesServicioImpl : IEmpleadosVacacionesTotalesServicio  
     {
         public Task<bool> ActualizarVacacionesTotalesAsync(int empleadoId, DateTime nuevaFechaInicio, DateTime nuevaFechaFin, int nuevosDiasTotales)
         {

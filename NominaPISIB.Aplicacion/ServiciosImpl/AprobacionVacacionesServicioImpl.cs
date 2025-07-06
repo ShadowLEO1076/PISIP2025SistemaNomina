@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class AprobacionVacacionesServicioImpl : IAprobacionVacacionesServicio
+    public class AprobacionVacacionesServicioImpl : ServicioImpl<AprobacionVacaciones>, IAprobacionVacacionesServicio
     {
+        public AprobacionVacacionesServicioImpl(NominaPISIBContext context) : base(context)
+        {
+        }
+
         public Task<bool> AprobarVacacionesAsync(int solicitudId, bool aprobar)
         {
             throw new NotImplementedException();
