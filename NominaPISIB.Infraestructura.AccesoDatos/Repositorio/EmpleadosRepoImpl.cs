@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NominaPISIB.Aplicacion.DTO.DTOs;
 using NominaPISIB.Dominio.Modelos.Abstracciones;
 namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
@@ -22,7 +23,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 var hoy = DateOnly.FromDateTime(DateTime.Today);
 
                 var empleadosConContratoActual =
-                    _context.Empleados.Where(emp => emp.EmpleadoEstado == "1")
+                    _context.Empleados.Where(emp => emp.EmpleadoEstado == "1" | emp.EmpleadoEstado == "Activo")
                     .Select(e => new EmpleadosContratoActivoDTO
                         {
                          NombresCompletos = e.EmpleadoNombres + " " +e.EmpleadoApellidos,
@@ -50,9 +51,35 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                         .Select(c => c.ContratoSalario)
                         .FirstOrDefault()
                     })
-                    .ToList();
+                    .ToListAsync();
 
-                return empleadosConContratoActual;
+                return await empleadosConContratoActual;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
+        public async Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl)
+        {
+            try
+
+            {
+                var historial = _context.Empleados
+                                .Where(emp => emp.EmpleadoNombres == nameEmpl && emp.EmpleadoApellidos == lastnameEmpl)
+                                 .Select(empl => new HistorialContratoEmpleados
+                                 {
+                                     NombresCompletos = empl.EmpleadoNombres + " " + empl.EmpleadoApellidos,
+                                     FechaIngreso = empl.EmpleadoFechaIngreso,
+
+                                     ContratosEmpleado = empl.Contratos.Select(c => new ContratoDto
+                                     {
+                                         idContrato = c.idContrato,
+                                         FechaInicioContrato = c.FechaInicioContrato,
+                                         ContratoFechaFin = c.ContratoFechaFin,
+                                         ContratoSalario = c.ContratoSalario
+                                     }).ToList()
+                                 }).ToListAsync();
+                                       
+                return await historial;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }

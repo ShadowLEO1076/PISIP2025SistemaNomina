@@ -12,6 +12,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IEmpleadosServicio : IService<Empleados>
     {
+        [OperationContract]
+        public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
         [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();

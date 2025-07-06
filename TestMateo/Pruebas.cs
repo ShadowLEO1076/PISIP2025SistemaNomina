@@ -25,12 +25,13 @@ namespace TestMateo
         [Test]
          public async Task Test1()
         {
-            var puestoPrueba = new Puestos { PuestoNombre = "INGENIERO EN TELECOMUNICACIONES", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
+            // var puestoPrueba = new Puestos { PuestoNombre = "INGENIERO EN TELECOMUNICACIONES", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
 
-            await _puestosServ.AddAsync( puestoPrueba );
+            // await _puestosServ.AddAsync( puestoPrueba );
 
-            //var prueba = await _empleServ.ObtenerContratoActivoEmpleados();
-            //Console.WriteLine( prueba );
+            // var prueba = await _empleServ.ObtenerContratoActivoEmpleados();
+            var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Mateo", "Vasquez");
+            Console.WriteLine( prueba2 );
             Assert.Pass();
         }
 

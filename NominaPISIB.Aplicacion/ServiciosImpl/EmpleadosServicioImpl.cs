@@ -23,6 +23,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
             return _repo.ObtenerContratoActivoEmpleados();
         }
+
+        public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl)
+        {
+            return _repo.ObtenerHistorialPorEmpleado(nameEmpl, lastnameEmpl);
+        }
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();
@@ -65,5 +70,7 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
             throw new NotImplementedException();
         }
+
+     
     }
 }
