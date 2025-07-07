@@ -12,6 +12,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IEmpleadosServicio : IService<Empleados>
     {
+
+        // PARA CONSULTAS TAREA 
         [OperationContract]
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
@@ -21,6 +23,10 @@ namespace NominaPISIB.Aplicacion.Servicios
 
         [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
+
+
+
+        // PARA OPERACIONES CRUD DE EMPLEADOS
         [OperationContract]
         Task<bool> RegistrarEmpleadoAsync(string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario);
         [OperationContract]

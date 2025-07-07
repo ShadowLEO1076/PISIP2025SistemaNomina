@@ -6,7 +6,7 @@ using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace TestLEO
 {
-    public class TestNominaDTO
+    public class ReporteNominaMensual
     {
         private NominaPISIBContext _context;
         private IEmpleadosServicio _empleadoNomi;
@@ -26,11 +26,7 @@ namespace TestLEO
         [Test]
         public async Task TestReporteNominaEmpleado()
         {
-            // var puestoPrueba = new Puestos { PuestoNombre = "INGENIERO EN TELECOMUNICACIONES", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
-
-            // await _puestosServ.AddAsync( puestoPrueba );
-
-            // var prueba = await _empleServ.ObtenerContratoActivoEmpleados();
+            
             var pruebaReporteNominaEmpleado = await _empleadoNomi.ObtenerReporteNominaMensual(5, 2024);
             Console.WriteLine(pruebaReporteNominaEmpleado);
             Assert.Pass();
