@@ -14,11 +14,16 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
     public class EmpleadosServicioImpl: ServicioImpl<Empleados>, IEmpleadosServicio
     {
         private IEmpleadosRepo _repo;
+
+
         public EmpleadosServicioImpl(NominaPISIBContext context) : base(context)
         {
             this._repo = new EmpleadosRepoImpl(context);
         }
-
+        public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
+        {
+            return _repo.ObtenerBonificacionesDeEmpleadoPorAnio(name,lastname,year);
+        }
         public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados()
         {
             return _repo.ObtenerContratoActivoEmpleados();
@@ -71,6 +76,6 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
-     
+       
     }
 }

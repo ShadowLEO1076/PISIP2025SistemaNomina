@@ -16,6 +16,31 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             this._context = context;
         }
 
+        public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
+        {
+            try
+            { 
+                var fecha = year;
+
+                var empleadosConContratoActual =
+                    _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname)
+                    .Select(dto => new BonificacionesEmpleadoDTO
+                    {
+                        NombresCompletos = dto.EmpleadoNombres + dto.EmpleadoApellidos,
+                        boniYear = fecha,
+
+                        bonificaciones = dto.Bonificaciones.Where(b => (b.BonificacionFecha.Year == fecha)).Select(b => new BonificacionesDTO
+                        {
+                            BonificacionFecha = b.BonificacionFecha,
+                            BonificacionMonto = b.BonificacionMonto,
+                        }).ToList()
+                    }).Where(bonoAux => bonoAux.bonificaciones.Any()).ToListAsync();
+
+                return await empleadosConContratoActual;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
         public async Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados()
         {
             try
@@ -82,6 +107,11 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 return await historial;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
+        public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+        {
+            throw new NotImplementedException();
         }
 
         public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
