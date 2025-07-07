@@ -9,6 +9,8 @@ namespace NominaPISIB.Aplicacion.Servicios
 {
     [ServiceContract]
     public interface INominasServicio
+
+    // : IService<Nominas> METODOS PARA CRUD DE NOMINAS
     {
         [OperationContract]
         Task<bool> RegistrarNominaAsync(int empleadoId, DateTime fechaPago, decimal monto);
@@ -28,5 +30,11 @@ namespace NominaPISIB.Aplicacion.Servicios
         Task<bool> NotificarNominaActualizadaAsync(int nominaId, string mensajeNotificacion);
         [OperationContract]
         Task<bool> NotificarNominaEliminadaAsync(int nominaId, string mensajeNotificacion);
+
+        [OperationContract]
+        // PARA USAR EN PRUEVAS NUNIT JUNTO CON DTO PARA CONSULTAS DEL DTO: ReporteDescuentosNominaDTO
+        Task<List<string>> ObtenerReporteDescuentosNomina(int mes, int anio);
+
+
     }
 }

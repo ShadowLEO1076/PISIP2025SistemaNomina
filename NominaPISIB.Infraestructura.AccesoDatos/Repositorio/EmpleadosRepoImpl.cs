@@ -89,9 +89,74 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             throw new NotImplementedException();
         }
 
-        public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
+        public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var ReporteL1 =
+                    _context.Empleados.Where(Rnomi => (Rnomi.EmpleadoFechaIngreso.Month == mes) && (Rnomi.EmpleadoFechaIngreso.Year == anio))
+                    .Select(e => new ReporteNominaMensualDTO
+                    {
+          
+                        NombresEmpleados = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
+                        IdEmpleado = e.idEmpleado,
+
+                        Anio = anio,
+                        Mes = mes,
+                        
+                        TotalHorasExtras = e.Nominas
+                            .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                            .Select(n => n.NominaHorasExtra)
+                            .FirstOrDefault(),
+
+                        TotalBonificaciones = e.Nominas
+                            .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                            .Select(n => n.NominaBonificaciones)
+                            .FirstOrDefault(),
+
+                        TotalBonificacionesEmpleado = e.Bonificaciones
+                            .Where(b => (b.BonificacionFecha.Month == mes) && (b.BonificacionFecha.Year == anio))
+                            .Select(b => b.BonificacionMonto)
+                            .Sum(),
+                        TotalDescuentos = e.Descuentos
+                            .Where(d => (d.DescuentoFecha.Month == mes) && (d.DescuentoFecha.Year == anio))
+                            .Select(d => d.DescuentoMonto)
+                            .Sum(),
+
+                        TotalDescuentosEmpleado = e.Descuentos
+                            .Where(d => (d.DescuentoFecha.Month == mes) && (d.DescuentoFecha.Year == anio))
+                            .Select(d => d.DescuentoMonto)
+                            .Sum(),
+
+                        SalarioBase = e.Nominas
+                            .Where(n =>( n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                            .Select(n => n.NominaSalarioNeto)
+                            .FirstOrDefault(),
+                        
+                        FechaEmision = e.Nominas
+                            .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                            .Select(n => n.NominaFechaEmision)
+                            .FirstOrDefault(),
+
+                        SalarioNeto = e.Nominas
+                            .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                            .Select(n => n.NominaSalarioNeto)
+                            .FirstOrDefault(),
+
+                        EstadoContrato = e.Contratos
+                            .Where(c => (c.FechaInicioContrato.Month == mes) && (c.FechaInicioContrato.Year == anio))
+                            .Select(c => c.EstadoContrato)
+                            .FirstOrDefault(),
+
+                    }).ToListAsync();return await ReporteL1;
+
+
+            }
+            catch
+            {
+                throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
+            }
+            
         }
     }
 }
