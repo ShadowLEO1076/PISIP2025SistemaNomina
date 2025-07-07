@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class NominasServicioImpl : INominasServicio
+    public class NominasServicioImpl : ServicioImpl<Nominas>, INominasServicio
     {
+        public NominasServicioImpl(NominaPISIBContext context) : base(context)
+        {
+        }
+
         public Task<bool> ActualizarNominaAsync(int nominaId, DateTime nuevaFechaPago, decimal nuevoMonto)
         {
             throw new NotImplementedException();
@@ -45,6 +50,13 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
         public Task<IEnumerable<string>> ObtenerNominasPorFechaAsync(DateTime fecha)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        // Para consultas de ReporteDescuentosNominaDTO
+        public Task<List<string>> ObtenerReporteDescuentosNomina(int mes, int anio)
         {
             throw new NotImplementedException();
         }

@@ -12,6 +12,11 @@ namespace NominaPISIB.Aplicacion.DTO.DTOs
         public int IdEmpleado { get; set; }
         public string NombresCompletos { get; set; }
         public string NumeroIdentidad { get; set; }
+        public string EmpleadoCorreo { get; set; }
+        public string Genero { get; set; }
+        public DateTime FechaIngreso { get; set; } // Fecha de ingreso del empleado a la empresa.
+        
+
 
         // Datos de la nómina
         public int Anio { get; set; }

@@ -33,6 +33,14 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
             return _repo.ObtenerHistorialPorEmpleado(nameEmpl, lastnameEmpl);
         }
+
+        // para reporte nomina mensual dto
+        
+        public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
+        {
+      
+            return await _repo.ObtenerReporteNominaMensual(mes, anio);
+        }
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();

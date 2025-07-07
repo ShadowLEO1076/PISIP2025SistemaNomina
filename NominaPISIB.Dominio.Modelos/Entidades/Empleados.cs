@@ -15,6 +15,8 @@ public partial class Empleados
 
     public string EmpleadoApellidos { get; set; }
 
+    public string EmpleadoCedula { get; set; }
+
     public string EmpleadoCorreo { get; set; }
 
     public DateOnly EmpleadoFechaNacimiento { get; set; }
