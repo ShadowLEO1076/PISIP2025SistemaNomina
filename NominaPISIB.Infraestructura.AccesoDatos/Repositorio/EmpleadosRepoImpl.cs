@@ -84,6 +84,11 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
 
+        public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
             throw new NotImplementedException();
