@@ -10,6 +10,7 @@ namespace TestLEO
     {
         private NominaPISIBContext _context;
         private INominasServicio _nominaP;
+        private IEmpleadosServicio _empleadosServicio;
 
         [SetUp]
         public void Setup()
@@ -20,14 +21,15 @@ namespace TestLEO
 
             _context = new NominaPISIBContext(opcion);
             _nominaP = new NominasServicioImpl(_context);
+            _empleadosServicio = new EmpleadosServicioImpl(_context);
         }
 
 
         [Test]
         public async Task TestReporteNominaEmpleado()
         {
-          
-            var pruebaReporteNominaDescuento = await _nominaP.ObtenerReporteDescuentosNomina(5, 2024);
+
+            var pruebaReporteNominaDescuento = await _empleadosServicio.ObtenerReporteDescuentosMensual(1, 2025);
             Console.WriteLine(pruebaReporteNominaDescuento);
             Assert.Pass();
         }
