@@ -1,18 +1,19 @@
-﻿using System;
+﻿using NominaPISIB.Aplicacion.DTO.DTOs;
+using NominaPISIB.Infraestructura.AccesoDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.Servicios
 {
     [ServiceContract]
     public interface IBonificacionesServicio : IService<Bonificaciones>
     {
-        [OperationContract]
 
+        [OperationContract]
         Task<bool> RegistrarBonificacionAsync(int empleadoId, decimal monto, string descripcion);
         [OperationContract]
         Task<bool> ActualizarBonificacionAsync(int bonificacionId, decimal nuevoMonto, string nuevaDescripcion);
