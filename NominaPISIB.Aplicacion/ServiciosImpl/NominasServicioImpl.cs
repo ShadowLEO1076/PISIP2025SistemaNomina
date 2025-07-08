@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NominaPISIB.Aplicacion.DTO.DTOs;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Dominio.Modelos.Abstracciones;
 using NominaPISIB.Infraestructura.AccesoDatos;
+using NominaPISIB.Infraestructura.AccesoDatos.Repositorio;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
     public class NominasServicioImpl : ServicioImpl<Nominas>, INominasServicio
     {
+        private INominasRepo _repo;
+
         public NominasServicioImpl(NominaPISIBContext context) : base(context)
         {
+            this._repo = new NominasRepoImpl(context);
         }
 
         public Task<bool> ActualizarNominaAsync(int nominaId, DateTime nuevaFechaPago, decimal nuevoMonto)
@@ -54,16 +60,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
-
-        // Para consultas de ReporteDescuentosNominaDTO
-        public Task<List<string>> ObtenerReporteDescuentosNomina(int mes, int anio)
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<bool> RegistrarNominaAsync(int empleadoId, DateTime fechaPago, decimal monto)
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

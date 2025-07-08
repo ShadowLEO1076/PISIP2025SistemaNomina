@@ -108,14 +108,73 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
-
-        public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
-
-        {
-            throw new NotImplementedException();
-        }
-
       
+         
+            public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+            {
+
+            
+                try
+                {
+                    var ReporteL2 =
+                        _context.Empleados.Where(Rdesc => (Rdesc.EmpleadoFechaIngreso.Month == mes) && (Rdesc.EmpleadoFechaIngreso.Year == anio))
+                        .Select(e => new ReporteDescuentosNominaDTO // 
+                        {
+                            NombresCompletos = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
+                            IdEmpleado = e.idEmpleado,
+                            Anio = anio,
+                            Mes = mes,
+                            TotalDescuentos = e.Descuentos
+                                .Where(d => (d.DescuentoFecha.Month == mes) && (d.DescuentoFecha.Year == anio))
+                                .Select(d => d.DescuentoMonto)
+                                .Sum(),
+                            TotalDescuentosEmpleado = e.Nominas
+                                .Where(n => (n.NominaMes == mes) && (n.NominaAnio == anio))
+                                .Select(n => n.NominaDescuentos)
+                                .Sum(),
+
+                            FechaEmision = e.Nominas
+                                .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                                .Select(n => n.NominaFechaEmision)
+                                .FirstOrDefault(),
+                            SalarioBase = e.Nominas
+                                .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                                .Select(n => n.NominaSalarioBase)
+                                .FirstOrDefault(),
+                            SueldoNeto = e.Nominas
+                                .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
+                                .Select(n => n.NominaSalarioNeto)
+                                .FirstOrDefault(),
+                            EstadoContrato = e.Contratos
+                                .Where(c => (c.FechaInicioContrato.Month == mes) && (c.FechaInicioContrato.Year == anio))
+                                .Select(c => c.EstadoContrato)
+                                .FirstOrDefault(),
+
+                            DescripcionDescuentos = e.Descuentos
+                                .Where(d => (d.DescuentoFecha.Month == mes) && (d.DescuentoFecha.Year == anio))
+                                .Select(d => d.DescuentoDescripcion)
+                                .ToList(),
+
+                            MontoDescuentos = e.Descuentos
+                                .Where(d => (d.DescuentoFecha.Month == mes) && (d.DescuentoFecha.Year == anio))
+                                .Select(d => d.DescuentoMonto)
+                                .ToList(),
+
+
+                        }).ToListAsync(); return await ReporteL2;
+
+                }
+                catch
+                {
+                    throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
+                }
+            }
+        
+
+
+           
+
+        // para reporte nomina mensual dto
 
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
@@ -184,7 +243,10 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             {
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
             }
-            
+
+           
+
+
         }
     }
 }
