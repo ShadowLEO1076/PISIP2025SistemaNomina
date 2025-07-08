@@ -22,7 +22,13 @@ namespace NominaPISIB.Aplicacion.Servicios
         Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 
         [OperationContract]
+        // aqui es para ReporteDescuentosNominaDTO
+        Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
+
+        [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
+
+   
 
 
 

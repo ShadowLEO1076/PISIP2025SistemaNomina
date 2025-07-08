@@ -36,6 +36,8 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
       
             return await _repo.ObtenerReporteNominaMensual(mes, anio);
         }
+
+       
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();
@@ -79,6 +81,12 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
-     
+        public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+        {
+            return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
+        }
+
+        
+
     }
 }

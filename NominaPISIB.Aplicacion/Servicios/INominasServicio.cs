@@ -4,11 +4,12 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace NominaPISIB.Aplicacion.Servicios
 {
     [ServiceContract]
-    public interface INominasServicio
+    public interface INominasServicio : IService<Nominas>
 
     // : IService<Nominas> METODOS PARA CRUD DE NOMINAS
     {
@@ -31,9 +32,9 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<bool> NotificarNominaEliminadaAsync(int nominaId, string mensajeNotificacion);
 
-        [OperationContract]
-        // PARA USAR EN PRUEVAS NUNIT JUNTO CON DTO PARA CONSULTAS DEL DTO: ReporteDescuentosNominaDTO
-        Task<List<string>> ObtenerReporteDescuentosNomina(int mes, int anio);
+        
+        
+        
 
 
     }
