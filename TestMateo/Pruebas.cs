@@ -35,6 +35,7 @@ namespace TestMateo
             var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Mateo", "Vasquez");
 
              Console.WriteLine( prueba2 );
+
             //var prueba3 = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnio("Mateo", "Vasquez", 2025);
             //Console.WriteLine( prueba3 );
            Assert.Pass();
