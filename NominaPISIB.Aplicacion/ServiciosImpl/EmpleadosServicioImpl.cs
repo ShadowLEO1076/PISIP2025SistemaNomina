@@ -11,7 +11,7 @@ using NominaPISIB.Infraestructura.AccesoDatos.Repositorio;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
-    public class EmpleadosServicioImpl: ServicioImpl<Empleados>, IEmpleadosServicio
+    public class EmpleadosServicioImpl : ServicioImpl<Empleados>, IEmpleadosServicio
     {
         private IEmpleadosRepo _repo;
 
@@ -22,7 +22,7 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
         {
-            return _repo.ObtenerBonificacionesDeEmpleadoPorAnio(name,lastname,year);
+            return _repo.ObtenerBonificacionesDeEmpleadoPorAnio(name, lastname, year);
         }
         public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados()
         {
@@ -35,18 +35,25 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
         // para reporte nomina mensual dto
-        
+
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
-      
+
             return await _repo.ObtenerReporteNominaMensual(mes, anio);
         }
+        // para reporte inacistencias licencia dto
+        public async Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio)
+        {
+            return await _repo.ObtenerReporteEmpleadosInasistenciasLicencia(mes, anio);
+        }
 
-       
+
+
         public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
         {
             throw new NotImplementedException();
         }
+
 
         public Task<bool> EliminarEmpleadoAsync(int empleadoId)
         {
@@ -68,7 +75,7 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
-       
+
 
         public Task<string> ObtenerDetallesEmpleadoAsync(int empleadoId)
         {
@@ -85,12 +92,15 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
             throw new NotImplementedException();
         }
+
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
         }
 
-        
 
     }
-}
+
+}  
+
+

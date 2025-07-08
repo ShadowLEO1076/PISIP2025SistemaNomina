@@ -6,7 +6,7 @@ using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace TestLEO
 {
-    public class ReporteNominaMensual // ESTA CONSULTA SE REALISA PARA OBTENER EL REPORTE DE NOMINA MENSUAL DE LOS EMPLEADOS EN DETERMINADA FECHA
+    public class ConsultaEmpleadosNominaMensual // ESTA CONSULTA SE REALISA PARA OBTENER EL REPORTE DE NOMINA MENSUAL DE LOS EMPLEADOS EN DETERMINADA FECHA
     {
         private NominaPISIBContext _context;
         private IEmpleadosServicio _empleadoNomi;
