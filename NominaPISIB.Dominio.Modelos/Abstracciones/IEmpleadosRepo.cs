@@ -10,6 +10,7 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
     public interface IEmpleadosRepo : IRepository<Empleados>
     {
+        public Task<List<Empleados>> ObtenerEmpleadosActivos();
         public Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnio(string name, string lastname, int year);
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year);

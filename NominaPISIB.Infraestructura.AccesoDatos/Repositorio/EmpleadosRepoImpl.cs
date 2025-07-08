@@ -310,5 +310,17 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
             }    
         }
+
+        public async Task<List<Empleados>> ObtenerEmpleadosActivos()
+        {
+            try 
+            {
+                var recuperados =
+                    _context.Empleados.Where(e => e.EmpleadoEstado == "1" | e.EmpleadoEstado == "Activo").ToListAsync();
+                return await recuperados;
+            }
+            catch(Exception ex) { throw new Exception("Error - EmpleadosRepoImpl: no se pudo traer los datos"
+                + ex.Message); }
+        }
     }
 }

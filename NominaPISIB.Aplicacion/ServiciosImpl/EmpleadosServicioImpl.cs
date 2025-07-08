@@ -98,7 +98,10 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
         }
 
-
+        public async Task<List<Empleados>> ObtenerEmpleadosActivos()
+        {
+            return await _repo.ObtenerEmpleadosActivos();
+        }
     }
 
 }  

@@ -12,6 +12,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IEmpleadosServicio : IService<Empleados>
     {
+        [OperationContract]
+        public Task<List<Empleados>> ObtenerEmpleadosActivos();
 
         // PARA CONSULTAS TAREA 
         [OperationContract]

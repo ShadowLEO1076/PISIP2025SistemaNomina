@@ -32,12 +32,15 @@ namespace TestMateo
             // await _puestosServ.AddAsync( puestoPrueba );
 
             // var prueba = await _empleServ.ObtenerContratoActivoEmpleados();
-            var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Mateo", "Vasquez");
+            //var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Mateo", "Vasquez");
 
-             Console.WriteLine( prueba2 );
+            //Console.WriteLine( prueba2 );
 
             //var prueba3 = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnio("Mateo", "Vasquez", 2025);
             //Console.WriteLine( prueba3 );
+
+            var pruebaMas = await _empleServ.ObtenerEmpleadosActivos();
+            Console.WriteLine(pruebaMas);
            Assert.Pass();
         }
 
