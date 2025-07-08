@@ -1,18 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using NominaPISIB.Aplicacion.Servicios;
+using NominaPISIB.Dominio.Modelos.Abstracciones;
 using NominaPISIB.Infraestructura.AccesoDatos;
+using NominaPISIB.Infraestructura.AccesoDatos.Repositorio;
 
 namespace NominaPISIB.Aplicacion.ServiciosImpl
 {
     public class PuestosServicioImpl : ServicioImpl<Puestos>, IPuestosServicio
     {
+        IPuestosRepo _repo;
         public PuestosServicioImpl(NominaPISIBContext context) : base(context)
         {
+            this._repo = new PuestosRepoImpl(context);
         }
+
+        public async Task<List<Puestos>> GetAll()
+        {
+            return await  _repo.GetAll();
+        }
+
 
         public Task<bool> ActualizarPuestoAsync(int puestoId, string nuevoNombrePuesto, string nuevaDescripcion, decimal nuevoSalarioBase)
         {
@@ -24,6 +35,7 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
+       
         public Task<bool> NotificarPuestoActualizadoAsync(int puestoId, string mensajeNotificacion)
         {
             throw new NotImplementedException();

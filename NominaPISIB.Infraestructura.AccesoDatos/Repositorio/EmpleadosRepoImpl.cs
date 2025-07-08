@@ -16,6 +16,31 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             this._context = context;
         }
 
+        public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnio(string name, string lastname, int year)
+        {
+            try
+            {
+                var fecha = year;
+
+                var empleados =
+                    _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname)
+                    .Select(dto => new DescuentosEmpleadosDTO
+                    {
+                        NombresCompletos = dto.EmpleadoNombres + dto.EmpleadoApellidos,
+                        boniYear = fecha,
+
+                        Descuentos = dto.Descuentos.Where(d => (d.DescuentoFecha.Year == fecha)).Select(d => new DescuentoDTO
+                        {
+                            descuentoFecha = d.DescuentoFecha,
+                            descuentoMonto = d.DescuentoMonto,
+                        }).ToList()
+                    }).Where(bonoAux => bonoAux.Descuentos.Any()).ToListAsync();
+
+                return await empleados;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
         public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
         {
             try
@@ -51,7 +76,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                     _context.Empleados.Where(emp => emp.EmpleadoEstado == "1" | emp.EmpleadoEstado == "Activo")
                     .Select(e => new EmpleadosContratoActivoDTO
                         {
-                         NombresCompletos = e.EmpleadoNombres + " " +e.EmpleadoApellidos,
+                         NombresCompletos = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
                          Correo = e.EmpleadoCorreo,
                          Genero = e.EmpleadoGenero,
                          FechaIngreso = e.EmpleadoFechaIngreso,
@@ -83,6 +108,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
 
+      
         public async Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl)
         {
             try
@@ -242,11 +268,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch
             {
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
-            }
-
-           
-
-
+            }    
         }
     }
 }

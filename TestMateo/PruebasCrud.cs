@@ -26,9 +26,13 @@ public class PruebasCrud
     [Test]
     public async Task Test1()
     {
-        var puestoPrueba = new Puestos { PuestoNombre = "INGENIERO EN TELECOMUNICACIONES", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
+        //var puestoPrueba = new Puestos { PuestoNombre = "INGENIERO EN TELECOMUNICACIONES", PuestoSalario = (decimal)560.56, PuestoVacacionesCantidad = 40};
 
-         await _puestosServ.AddAsync( puestoPrueba );
+        //await _puestosServ.AddAsync( puestoPrueba );
+
+        var hola = await _puestosServ.GetAll();
+
+        Console.WriteLine(hola);
         Assert.Pass();
     }
 
