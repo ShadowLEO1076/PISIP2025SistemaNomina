@@ -30,9 +30,9 @@ public class PruebasCrud
 
         //await _puestosServ.AddAsync( puestoPrueba );
 
-        var hola = await _puestosServ.GetAll();
+        //var hola = await _puestosServ.GetAll();
 
-        Console.WriteLine(hola);
+        //Console.WriteLine(hola);
         Assert.Pass();
     }
 

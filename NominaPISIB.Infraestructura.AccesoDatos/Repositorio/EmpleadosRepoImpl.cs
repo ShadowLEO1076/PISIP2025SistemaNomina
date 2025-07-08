@@ -133,9 +133,16 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 return await historial;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+
+        }
+
+            public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+            {
+
         }    
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
+
 
             
             try
@@ -188,6 +195,17 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                    }).ToListAsync(); return await ReporteL2;
 
             }
+
+
+        
+
+
+           
+
+        // para reporte nomina mensual dto
+
+
+
             catch
             {
                throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
@@ -226,6 +244,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
         }
         // para reporte nomina mensual dto
+
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
             try
@@ -290,6 +309,18 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             {
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
             }    
+        }
+
+        public async Task<List<Empleados>> ObtenerEmpleadosActivos()
+        {
+            try 
+            {
+                var recuperados =
+                    _context.Empleados.Where(e => e.EmpleadoEstado == "1" | e.EmpleadoEstado == "Activo").ToListAsync();
+                return await recuperados;
+            }
+            catch(Exception ex) { throw new Exception("Error - EmpleadosRepoImpl: no se pudo traer los datos"
+                + ex.Message); }
         }
     }
 }
