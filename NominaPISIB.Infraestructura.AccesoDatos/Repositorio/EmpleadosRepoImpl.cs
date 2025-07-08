@@ -112,7 +112,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         public async Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl)
         {
             try
-
             {
                 var historial = _context.Empleados
                                 .Where(emp => emp.EmpleadoNombres == nameEmpl && emp.EmpleadoApellidos == lastnameEmpl)
@@ -134,17 +133,9 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
 
-        }
-
-            public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
-            {
-
-        }    
+        }   
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
-        {
-
-
-            
+        {  
             try
             {
                var ReporteL2 =
@@ -193,19 +184,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 
 
                    }).ToListAsync(); return await ReporteL2;
-
             }
-
-
-        
-
-
-           
-
-        // para reporte nomina mensual dto
-
-
-
             catch
             {
                throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
@@ -310,7 +289,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
             }    
         }
-
         public async Task<List<Empleados>> ObtenerEmpleadosActivos()
         {
             try 
