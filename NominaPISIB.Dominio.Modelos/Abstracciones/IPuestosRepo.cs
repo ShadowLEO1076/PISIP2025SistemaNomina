@@ -9,5 +9,6 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
     public interface IPuestosRepo : IRepository<Puestos>
     {
+        Task<List<Puestos>> GetAll();
     }
 }

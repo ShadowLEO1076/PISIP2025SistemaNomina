@@ -12,6 +12,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     public interface IPuestosServicio : IService<Puestos> 
     {
         [OperationContract]
+        Task<List<Puestos>> GetAll();
+        [OperationContract]
         Task<bool> RegistrarPuestoAsync(string nombrePuesto, string descripcion, decimal salarioBase);
         [OperationContract]
         Task<bool> ActualizarPuestoAsync(int puestoId, string nuevoNombrePuesto, string nuevaDescripcion, decimal nuevoSalarioBase);

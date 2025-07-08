@@ -98,5 +98,9 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
         }
 
-    }  
-}
+
+    }
+
+}  
+
+

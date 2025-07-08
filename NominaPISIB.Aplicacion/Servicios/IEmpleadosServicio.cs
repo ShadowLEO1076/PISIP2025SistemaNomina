@@ -36,8 +36,6 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
 
-
-
         // PARA OPERACIONES CRUD DE EMPLEADOS
 
         [OperationContract]
