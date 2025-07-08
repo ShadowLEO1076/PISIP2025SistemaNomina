@@ -136,6 +136,13 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 
         }
 
+<<<<<<< HEAD
+=======
+            public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
+            {
+
+        }    
+>>>>>>> d03d0721c07e6362b8f3fd107c091f6bad382319
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
 
@@ -201,6 +208,10 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         // para reporte nomina mensual dto
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> d03d0721c07e6362b8f3fd107c091f6bad382319
             catch
             {
                throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
