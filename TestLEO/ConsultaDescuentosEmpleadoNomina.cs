@@ -6,7 +6,7 @@ using NominaPISIB.Infraestructura.AccesoDatos;
 
 namespace TestLEO
 {
-    public class ObtenerReporteDescuentosNomina
+    public class ConsultaDescuentosEmpleadoNomina
     {
         private NominaPISIBContext _context;
         private INominasServicio _nominaP;

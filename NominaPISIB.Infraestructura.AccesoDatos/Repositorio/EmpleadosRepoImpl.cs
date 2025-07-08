@@ -169,10 +169,43 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                     throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
                 }
             }
-        
+
+        public Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio)
+        {
+            try
+            {
+                var ReporteL3 = _context.Empleados
+                    .Select(e => new ReporteEmpleadosInasistenciasLicenciaDTO
+                    {
+                        NombresCompletos = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
+                        IdEmpleado = e.idEmpleado,
+                        NumeroIdentidad = e.EmpleadoCedula,
+
+                        FechaInasistencia = e.Inasistencias
+                            .Where(i => i.InasistenciaFecha.Month == mes && i.InasistenciaFecha.Year == anio)
+                            .Select(i => i.InasistenciaFecha)
+                            .FirstOrDefault(),
+                        IdLicencia = e.Inasistencias
+                            .Where(i => i.InasistenciaFecha.Month == mes && i.InasistenciaFecha.Year == anio)
+                            .Select(i => i.idLicencia)
+                            .FirstOrDefault(),
 
 
-           
+
+                    })
+                    .ToListAsync();
+
+                return ReporteL3;
+            }
+            catch
+            {
+                throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
+            }
+        }
+
+
+
+
 
         // para reporte nomina mensual dto
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)

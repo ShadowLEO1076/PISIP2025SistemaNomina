@@ -29,7 +29,14 @@ namespace NominaPISIB.Aplicacion.Servicios
         Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
 
         [OperationContract]
+        // aqui es para ReporteEmpleadosInasistenciasLicenciaDTO
+
+        Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio);
+
+        [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
+
+
 
         // PARA OPERACIONES CRUD DE EMPLEADOS
 
@@ -45,6 +52,9 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<IEnumerable<string>> ObtenerEmpleadosAsync();
 
+
+        /*
+
         [OperationContract]
         Task<string> ObtenerDetallesEmpleadoAsync(int empleadoId);
 
@@ -54,7 +64,7 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<bool> NotificarEmpleadoActualizadoAsync(int empleadoId, string mensajeNotificacion);
         [OperationContract]
-        Task<bool> NotificarEmpleadoEliminadoAsync(int empleadoId, string mensajeNotificacion);
+        Task<bool> NotificarEmpleadoEliminadoAsync(int empleadoId, string mensajeNotificacion);*/
 
     }
 }

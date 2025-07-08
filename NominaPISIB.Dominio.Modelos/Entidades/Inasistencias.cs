@@ -13,6 +13,8 @@ public partial class Inasistencias
 
     public DateOnly InasistenciaFecha { get; set; }
 
+    public int? InacistenciaContador { get; set; }
+
     public virtual Empleados idEmpleadoNavigation { get; set; }
 
     public virtual Licencias idLicenciaNavigation { get; set; }

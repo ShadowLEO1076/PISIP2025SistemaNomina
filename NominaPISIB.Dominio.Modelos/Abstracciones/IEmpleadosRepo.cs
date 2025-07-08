@@ -22,7 +22,13 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
         // para reporte nomina mensual dto
         public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
 
-        
+        // para ReporteEmpleadosInasistenciasLicenciaDTO
+
+        public Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio);
+
+
+
+
 
 
 
