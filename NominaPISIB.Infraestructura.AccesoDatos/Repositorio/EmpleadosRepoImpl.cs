@@ -301,5 +301,17 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch(Exception ex) { throw new Exception("Error - EmpleadosRepoImpl: no se pudo traer los datos"
                 + ex.Message); }
         }
+
+        public async Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname)
+        {
+            try
+            { 
+                var empleado =
+                    _context.Empleados.Where(e => e.EmpleadoNombres == name && e.EmpleadoApellidos == lastname).FirstOrDefault();
+
+                return empleado;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : no se puede encontrar dato"); }
+        }
     }
 }

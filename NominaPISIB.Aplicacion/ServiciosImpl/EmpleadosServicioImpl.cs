@@ -102,6 +102,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
             return await _repo.ObtenerEmpleadosActivos();
         }
+
+        public async Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname)
+        {
+            return await _repo.ObtenerEmpleadoPorNombre(name, lastname);
+        }
     }
 
 }  
