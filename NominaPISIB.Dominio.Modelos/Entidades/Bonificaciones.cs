@@ -11,6 +11,8 @@ public partial class Bonificaciones
 
     public int? idEmpleado { get; set; }
 
+    public string BonificacionTipo { get; set; }
+
     public string BonificacionDescripcion { get; set; }
 
     public decimal BonificacionMonto { get; set; }

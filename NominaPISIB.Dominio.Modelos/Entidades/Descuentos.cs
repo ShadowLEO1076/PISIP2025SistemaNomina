@@ -11,6 +11,8 @@ public partial class Descuentos
 
     public int? idEmpleado { get; set; }
 
+    public string DescuentoTipo { get; set; }
+
     public string DescuentoDescripcion { get; set; }
 
     public decimal DescuentoMonto { get; set; }
