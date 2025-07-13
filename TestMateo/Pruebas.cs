@@ -42,11 +42,16 @@ namespace TestMateo
             //var pruebaMas = await _empleServ.ObtenerEmpleadosActivos();
             //Console.WriteLine(pruebaMas);
 
-            var pruebaEmpleado = await _empleServ.ObtenerEmpleadoPorNombre("Mateo", "Vasquez");
-            string cambio = "0987232123";
-            pruebaEmpleado.EmpleadoTelfPersonal = cambio;
-            await _empleServ.UpdateAsync( pruebaEmpleado );
+            /* var pruebaEmpleado = await _empleServ.ObtenerEmpleadoPorNombre("Mateo", "Vasquez");
+             string cambio = "0987232123";
+             pruebaEmpleado.EmpleadoTelfPersonal = cambio;
+             await _empleServ.UpdateAsync( pruebaEmpleado );*/
 
+            var pruebaSuma = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
+
+            var pruebaSum2 = _empleServ.CalcularBonificacionesDeEmpleadoPorAnioYMesAsync("Mateo", "Vasquez", 2025, 7);
+
+     
            Assert.Pass();
         }
 

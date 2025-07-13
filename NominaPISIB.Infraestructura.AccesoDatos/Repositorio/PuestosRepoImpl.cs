@@ -27,5 +27,10 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
             catch (Exception ex) { throw new Exception("Error -  PuestosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
-     } 
+
+        public Task<Puestos> ObtenerPuestoPorNombre(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+    } 
 }
