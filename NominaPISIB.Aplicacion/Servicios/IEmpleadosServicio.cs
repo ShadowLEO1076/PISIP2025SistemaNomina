@@ -13,16 +13,36 @@ namespace NominaPISIB.Aplicacion.Servicios
     public interface IEmpleadosServicio : IService<Empleados>
     {
         [OperationContract]
+        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista);
+
+        [OperationContract]
+        public decimal CalcularDescuentosDeEmpleadoPorAnioYMes(List<DescuentosEmpleadosDTO> lista);
+        
+        [OperationContract]
+        public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+
+        [OperationContract]
+        public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+
+        // hace lo que dice. Ya implementada -> Mateo Vasquez
+        [OperationContract]
+        public Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname);
+
+        // hace lo que dice. Ya implementada -> Mateo Vasquez
+        [OperationContract]
         public Task<List<Empleados>> ObtenerEmpleadosActivos();
 
         // PARA CONSULTAS TAREA 
         [OperationContract]
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year);
 
+        // hace lo que dice. Ya implementada -> Mateo Vasquez
         [OperationContract]
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
+        // hace lo que dice. Ya implementada -> Mateo Vasquez
         [OperationContract]
+
         // aqui es para ReporteNominaMensualDTO
         Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NominaPISIB.Dominio.Modelos.Abstracciones;
 namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 {
@@ -20,11 +21,16 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             {
 
                 var puestos =
-                    _context.Puestos.ToList();
+                    _context.Puestos.ToListAsync();
 
-                return puestos;
+                return await puestos;
             }
             catch (Exception ex) { throw new Exception("Error -  PuestosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
-     } 
+
+        public Task<Puestos> ObtenerPuestoPorNombre(string nombre)
+        {
+            throw new NotImplementedException();
+        }
+    } 
 }
