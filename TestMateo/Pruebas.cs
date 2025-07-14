@@ -10,7 +10,7 @@ namespace TestMateo
         private NominaPISIBContext _context;
         private IPuestosServicio _puestosServ;
         private IEmpleadosServicio _empleServ;
-       
+        private IAsistenciasServicio _asisServ;
 
         [SetUp]
         public void Setup()
@@ -22,6 +22,7 @@ namespace TestMateo
             _context = new NominaPISIBContext( opcion );
             _puestosServ = new PuestosServicioImpl( _context );
             _empleServ =new EmpleadosServicioImpl(_context );
+            _asisServ = new AsistenciasServicioImpl(_context);
         }
 
         [Test]
@@ -47,11 +48,15 @@ namespace TestMateo
              pruebaEmpleado.EmpleadoTelfPersonal = cambio;
              await _empleServ.UpdateAsync( pruebaEmpleado );*/
 
+            /*
             var pruebaSuma = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
 
-            var pruebaSum2 = _empleServ.CalcularBonificacionesDeEmpleadoPorAnioYMesAsync("Mateo", "Vasquez", 2025, 7);
+            var pruebaSum2 = _empleServ.CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(pruebaSuma);
+            */
 
-     
+            var pruebaAsis = await _asisServ.ObtenerAsistenciasEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 07);
+            Console.WriteLine( pruebaAsis );
+
            Assert.Pass();
         }
 

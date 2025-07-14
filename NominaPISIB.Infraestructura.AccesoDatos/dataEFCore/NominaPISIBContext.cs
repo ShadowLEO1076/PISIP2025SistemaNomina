@@ -48,6 +48,9 @@ public partial class NominaPISIBContext : DbContext
         => optionsBuilder.UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;");
         //.UseSqlServer("Data Source=(localdb)\\leo;Initial Catalog=NominaPisip;Integrated Security=True;Encrypt=True");
 
+//=> optionsBuilder.UseSqlServer("Data Source=(localdb)\\leo;Initial Catalog=NominaPisip;Integrated Security=True;Encrypt=True");
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<AprobacionVacaciones>(entity =>
