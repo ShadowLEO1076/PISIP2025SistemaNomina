@@ -58,8 +58,8 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados();
 
-        // PARA OPERACIONES CRUD DE EMPLEADOS
-
+        // PARA OPERACIONES CRUD DE EMPLEADOS -> todas estas operaciones ya son genéricas
+        /*
         [OperationContract]
         Task<bool> RegistrarEmpleadoAsync(string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario);
 
@@ -71,20 +71,7 @@ namespace NominaPISIB.Aplicacion.Servicios
 
         [OperationContract]
         Task<IEnumerable<string>> ObtenerEmpleadosAsync();
-
-
-        /*
-
-        [OperationContract]
-        Task<string> ObtenerDetallesEmpleadoAsync(int empleadoId);
-
-        [OperationContract]
-        Task<bool> NotificarEmpleadoRegistradoAsync(int empleadoId, string mensajeNotificacion);
-
-        [OperationContract]
-        Task<bool> NotificarEmpleadoActualizadoAsync(int empleadoId, string mensajeNotificacion);
-        [OperationContract]
-        Task<bool> NotificarEmpleadoEliminadoAsync(int empleadoId, string mensajeNotificacion);*/
+        */
 
     }
 }

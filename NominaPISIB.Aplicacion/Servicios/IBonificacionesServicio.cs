@@ -13,14 +13,6 @@ namespace NominaPISIB.Aplicacion.Servicios
     public interface IBonificacionesServicio : IService<Bonificaciones>
     {
 
-        [OperationContract]
-        Task<bool> RegistrarBonificacionAsync(int empleadoId, decimal monto, string descripcion);
-        [OperationContract]
-        Task<bool> ActualizarBonificacionAsync(int bonificacionId, decimal nuevoMonto, string nuevaDescripcion);
-        [OperationContract]
-        Task<bool> EliminarBonificacionAsync(int bonificacionId);
-        [OperationContract]
-        Task<IEnumerable<string>> ObtenerBonificacionesPorEmpleadoAsync(int empleadoId);
 
     }
 }

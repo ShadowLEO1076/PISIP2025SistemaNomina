@@ -49,51 +49,6 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
 
-
-        public Task<bool> ActualizarEmpleadoAsync(int empleadoId, string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public Task<bool> EliminarEmpleadoAsync(int empleadoId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> NotificarEmpleadoActualizadoAsync(int empleadoId, string mensajeNotificacion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> NotificarEmpleadoEliminadoAsync(int empleadoId, string mensajeNotificacion)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> NotificarEmpleadoRegistradoAsync(int empleadoId, string mensajeNotificacion)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        public Task<string> ObtenerDetallesEmpleadoAsync(int empleadoId)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public Task<bool> RegistrarEmpleadoAsync(string nombre, string apellido, DateTime fechaNacimiento, string puesto, decimal salario)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<string>> ObtenerEmpleadosAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);

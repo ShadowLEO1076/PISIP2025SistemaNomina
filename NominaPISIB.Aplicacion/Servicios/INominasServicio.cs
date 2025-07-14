@@ -11,8 +11,9 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface INominasServicio : IService<Nominas>
 
-    // : IService<Nominas> METODOS PARA CRUD DE NOMINAS
+    // : IService<Nominas> METODOS PARA CRUD DE NOMINAS -> esto ya lo tenemos gracias al genérico
     {
+        /*
         [OperationContract]
         Task<bool> RegistrarNominaAsync(int empleadoId, DateTime fechaPago, decimal monto);
         [OperationContract]
@@ -31,7 +32,7 @@ namespace NominaPISIB.Aplicacion.Servicios
         Task<bool> NotificarNominaActualizadaAsync(int nominaId, string mensajeNotificacion);
         [OperationContract]
         Task<bool> NotificarNominaEliminadaAsync(int nominaId, string mensajeNotificacion);
-
+        */
         
         
         
