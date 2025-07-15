@@ -15,11 +15,12 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
     public class EmpleadosServicioImpl : ServicioImpl<Empleados>, IEmpleadosServicio
     {
         private IEmpleadosRepo _repo;
-
+        private readonly NominaPISIBContext _context;
 
         public EmpleadosServicioImpl(NominaPISIBContext context) : base(context)
         {
-            this._repo = new EmpleadosRepoImpl(context);
+            _context = context;
+            _repo = new EmpleadosRepoImpl(context);
         }
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
         {

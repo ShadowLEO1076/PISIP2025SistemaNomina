@@ -13,9 +13,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
     public class ServicioImpl<T> : IService<T> where T : class
     {
         IRepository<T> _repository;
+        private readonly NominaPISIBContext _context; // leo 
 
         public ServicioImpl(NominaPISIBContext context)
         {
+            _context = context; // leo
             _repository = new RepositorioImpl<T>(context);
         }
         public async Task AddAsync(T entity)

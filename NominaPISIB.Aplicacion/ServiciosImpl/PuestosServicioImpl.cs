@@ -14,9 +14,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
     public class PuestosServicioImpl : ServicioImpl<Puestos>, IPuestosServicio
     {
         IPuestosRepo _repo;
+        private readonly NominaPISIBContext _context;
         public PuestosServicioImpl(NominaPISIBContext context) : base(context)
         {
-            this._repo = new PuestosRepoImpl(context);
+            _context = context;
+            _repo = new PuestosRepoImpl(context);
         }
 
         public async Task<List<Puestos>> GetAll()

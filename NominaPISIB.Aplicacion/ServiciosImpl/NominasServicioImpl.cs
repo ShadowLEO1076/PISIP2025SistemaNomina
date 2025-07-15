@@ -14,10 +14,12 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
     public class NominasServicioImpl : ServicioImpl<Nominas>, INominasServicio
     {
         private INominasRepo _repo;
+        private readonly NominaPISIBContext _context;
 
         public NominasServicioImpl(NominaPISIBContext context) : base(context)
         {
-            this._repo = new NominasRepoImpl(context);
+            _context = context;   // leo
+            _repo = new NominasRepoImpl(context);
         }
 
         public Task<bool> ActualizarNominaAsync(int nominaId, DateTime nuevaFechaPago, decimal nuevoMonto)
