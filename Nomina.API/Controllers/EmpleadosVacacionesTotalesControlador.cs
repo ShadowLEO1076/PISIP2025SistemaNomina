@@ -26,6 +26,9 @@ namespace Nomina.API.Controllers
         [HttpGet("Obtener Vacaciones Empleado/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
+
+            Console.WriteLine("Se añadio correctamente el valor int : {id}");
+
             var vacaciones = await _empleadosVacacionesTotalesServicio.GetByIdAsync(id);
             if (vacaciones == null)
             {

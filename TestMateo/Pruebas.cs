@@ -17,7 +17,7 @@ namespace TestMateo
         {
             //esta config funciona solo en mi compu.
             var opcion = new DbContextOptionsBuilder<NominaPISIBContext>()
-                .UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True;")
+                .UseSqlServer("Data Source=DESKTOP-NCNTGBP\\MIPRIMERSQL2024;Initial Catalog=NominaPisip;Integrated Security=True;TrustServerCertificate=True; Encrypt=True")
                 .Options;
             _context = new NominaPISIBContext( opcion );
             _puestosServ = new PuestosServicioImpl( _context );

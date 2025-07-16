@@ -56,7 +56,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
             try
             {
