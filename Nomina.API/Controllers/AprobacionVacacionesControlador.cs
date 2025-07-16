@@ -8,7 +8,7 @@ namespace Nomina.API.Controllers
     [Route("api/[controller]")]
     public class AprobacionVacacionesControlador :ControllerBase
     {
-        private readonly IAprobacionVacacionesServicio _servicio;
+        private IAprobacionVacacionesServicio _servicio;
 
         public AprobacionVacacionesControlador (IAprobacionVacacionesServicio servicio)
         {

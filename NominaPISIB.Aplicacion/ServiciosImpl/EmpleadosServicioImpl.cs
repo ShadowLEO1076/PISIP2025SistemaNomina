@@ -65,15 +65,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             return await _repo.ObtenerEmpleadoPorNombre(name, lastname);
         }
 
+        /* Inutilizado, mandado a DescuestosServicioImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {
            return await _repo.ObtenerDescuentosDeEmpleadoPorAnioYMes(name, lastname, year, month);
-        }
-
-        public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
-        {
-            return await _repo.ObtenerBonificacionesDeEmpleadoPorAnioYMes(name, lastname, year, month);
-        }
+        }*/
 
         public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista)
         {

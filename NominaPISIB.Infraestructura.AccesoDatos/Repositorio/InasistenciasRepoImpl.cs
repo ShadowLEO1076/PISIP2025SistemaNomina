@@ -12,11 +12,19 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         public InasistenciasRepoImpl(NominaPISIBContext context) : base(context)
         {
         }
-
+        
         public Task<List<InasistenciasEmpleadosDTO>> ObtenerAsistenciasEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception ex) 
+            {
+                throw new NotImplementedException();
+            }
         }
+        
     }
     
 }

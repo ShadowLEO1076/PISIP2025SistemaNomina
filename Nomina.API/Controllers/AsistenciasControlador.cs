@@ -7,10 +7,10 @@ using NominaPISIB.Infraestructura.AccesoDatos;
 namespace Nomina.API.Controllers
 {
     [ApiController]
-    [Route("/[controller]")]
+    [Route("api/[controller]")]
     public class AsistenciasControlador : ControllerBase
     {
-        private readonly IAsistenciasServicio _serv;
+        private IAsistenciasServicio _serv;
 
         public AsistenciasControlador(IAsistenciasServicio asiServicio)
         {

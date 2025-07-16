@@ -11,6 +11,8 @@ namespace TestMateo
         private IPuestosServicio _puestosServ;
         private IEmpleadosServicio _empleServ;
         private IAsistenciasServicio _asisServ;
+        private IBonificacionesServicio _boniServ;
+        private IDescuentosServicio _descServ;
 
         [SetUp]
         public void Setup()
@@ -23,6 +25,8 @@ namespace TestMateo
             _puestosServ = new PuestosServicioImpl( _context );
             _empleServ =new EmpleadosServicioImpl(_context );
             _asisServ = new AsistenciasServicioImpl(_context);
+            _boniServ = new BonificacionesServicioImpl(_context);
+            _descServ = new DescuentosServicioImpl(_context) ;
         }
 
         [Test]
@@ -48,16 +52,13 @@ namespace TestMateo
              pruebaEmpleado.EmpleadoTelfPersonal = cambio;
              await _empleServ.UpdateAsync( pruebaEmpleado );*/
 
-            /*
-            var pruebaSuma = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
+            /*var pruebaBoni = await _boniServ.ObtenerBonificacionesDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
+            Console.WriteLine( pruebaBoni );^*/
 
-            var pruebaSum2 = _empleServ.CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(pruebaSuma);
-            */
+            var pruebaDesc = await _descServ.ObtenerDescuentosDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
+            Console.WriteLine(pruebaDesc);
 
-            var pruebaAsis = await _asisServ.ObtenerAsistenciasEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 07);
-            Console.WriteLine( pruebaAsis );
-
-           Assert.Pass();
+            Assert.Pass();
         }
 
         [TearDown]

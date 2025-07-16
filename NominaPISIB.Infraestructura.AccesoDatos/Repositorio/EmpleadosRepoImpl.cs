@@ -314,6 +314,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : no se puede encontrar dato"); }
         }
 
+        /* inutilizado, mandado a DescuentoRepoImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {
             try
@@ -338,32 +339,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 return await empleados;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
-        }
-
-        public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
-        {
-            try
-            {
-                var fecha = year;
-                var mes = month;
-
-                var empleadosConContratoActual =
-                    _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname)
-                    .Select(dto => new BonificacionesEmpleadoDTO
-                    {
-                        NombresCompletos = dto.EmpleadoNombres + dto.EmpleadoApellidos,
-                        boniYear = fecha,
-
-                        bonificaciones = dto.Bonificaciones.Where(b => (b.BonificacionFecha.Year == fecha && b.BonificacionFecha.Month == mes)).Select(b => new BonificacionesDTO
-                        {
-                            BonificacionFecha = b.BonificacionFecha,
-                            BonificacionMonto = b.BonificacionMonto,
-                        }).ToList()
-                    }).Where(bonoAux => bonoAux.bonificaciones.Any()).ToListAsync();
-
-                return await empleadosConContratoActual;
-            }
-            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
-        }
+        }*/
     }
 }
