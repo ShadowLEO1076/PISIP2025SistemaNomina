@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -28,22 +29,22 @@ public partial class Empleados
     public string EmpleadoTelfPersonal { get; set; }
 
     public DateOnly EmpleadoFechaIngreso { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Asistencias> Asistencias { get; set; } = new List<Asistencias>();
-
+    [JsonIgnore]
     public virtual ICollection<Bonificaciones> Bonificaciones { get; set; } = new List<Bonificaciones>();
-
+    [JsonIgnore]
     public virtual ICollection<Contratos> Contratos { get; set; } = new List<Contratos>();
-
+    [JsonIgnore]
     public virtual ICollection<Descuentos> Descuentos { get; set; } = new List<Descuentos>();
-
+    [JsonIgnore]
     public virtual EmpleadosVacacionesTotales EmpleadosVacacionesTotales { get; set; }
-
+    [JsonIgnore]
     public virtual Puestos FKidPuestoNavigation { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Inasistencias> Inasistencias { get; set; } = new List<Inasistencias>();
-
+    [JsonIgnore]
     public virtual ICollection<Nominas> Nominas { get; set; } = new List<Nominas>();
-
+    [JsonIgnore]
     public virtual ICollection<SolicitudVacaciones> SolicitudVacaciones { get; set; } = new List<SolicitudVacaciones>();
 }

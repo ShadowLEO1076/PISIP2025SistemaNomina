@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -14,6 +15,6 @@ public partial class Puestos
     public decimal PuestoSalario { get; set; }
 
     public int PuestoVacacionesCantidad { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Empleados> Empleados { get; set; } = new List<Empleados>();
 }

@@ -16,14 +16,14 @@ namespace Nomina.API.Controllers
         }
 
         // este método lista todos los puestos disponibles
-        [HttpGet("Listar Empleados Puestos")]
+        [HttpGet("ListarEmpleadosPuestos")]
         public Task<IEnumerable<Puestos>> GetAllasync()
         {
             return _puestosServicio.GetAllAsync();
         }
 
         // este método obtiene un puesto por su ID
-        [HttpGet("Obtener Puesto/{id}")]
+        [HttpGet("ObtenerPuesto/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var puesto = await _puestosServicio.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método permite agregar un nuevo puesto
-        [HttpPost("Agregar Puesto")]
+        [HttpPost("AgregarPuesto")]
         public async Task<IActionResult> AddAsync([FromBody] Puestos puesto)
         {
             if (puesto == null)
@@ -55,7 +55,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método permite actualizar un puesto existente
-        [HttpPut("Actualizar Puesto")]
+        [HttpPut("ActualizarPuesto")]
         public async Task<IActionResult> UpdateAsync([FromBody] Puestos puesto)
         {
             if (puesto == null)
@@ -75,7 +75,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método elimina un puesto por su ID
-        [HttpDelete("Eliminar Puesto/{id}")]
+        [HttpDelete("EliminarPuesto/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var puesto = await _puestosServicio.GetByIdAsync(id);

@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -10,6 +11,6 @@ public partial class EmpleadosVacacionesTotales
     public int idEmpleado { get; set; }
 
     public int EmpleadoVacacionesTotales { get; set; }
-
+    [JsonIgnore]
     public virtual Empleados idEmpleadoNavigation { get; set; }
 }
