@@ -20,7 +20,7 @@ namespace TestLEO
                 .Options;
 
             _context = new NominaPISIBContext(opcion);
-            _nominaP = new NominasServicioImpl(_context);
+            //_nominaP = new NominasServicioImpl(_context);
             _empleadosServicio = new EmpleadosServicioImpl(_context);
         }
 

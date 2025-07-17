@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen();
 
 // 1. leer la cadena de conexion del appsettings.json y guardarla en una variable de entorno
 //var connectionDB = builder.Configuration.GetConnectionString("DefaultConnection");
-var connectionDB = builder.Configuration.GetConnectionString("ConnectionMateo");
+var connectionDB = builder.Configuration.GetConnectionString("DefaultConnection"); //ConnectionMateo
 // 2. crear el DbContext global con la cadena de conexion
 builder.Services.AddDbContext<NominaPISIBContext>(options =>
     options.UseSqlServer(connectionDB),ServiceLifetime.Scoped);
@@ -38,6 +38,8 @@ builder.Services.AddScoped<IInasistenciasServicio, InasistenciasServicioImpl>();
 // ahora para licencias
 
 builder.Services.AddScoped<ILicenciasServicio, LicenciasServicioImpl>();
+// ahora para contratos
+builder.Services.AddScoped<IContratosServicio, ContratosServicioImpl>();
 
 // ahora para Nominas
 builder.Services.AddScoped<INominasRepo, NominasRepoImpl>();
@@ -57,6 +59,8 @@ builder.Services.AddScoped<IBonificacionesServicio, BonificacionesServicioImpl>(
 builder.Services.AddScoped<IDescuentosServicio,DescuentosServicioImpl>();
 builder.Services.AddScoped<IInasistenciasServicio, InasistenciasServicioImpl>();
 builder.Services.AddScoped<IEmpleadosServicio, EmpleadosServicioImpl>();
+//ahora contrato tipo 
+builder.Services.AddScoped<IContratosTipoServicio, ContratosTipoServicioImpl>();
 
 var app = builder.Build();
 

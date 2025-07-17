@@ -12,6 +12,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IContratosTipoServicio : IService<ContratosTipo>
     {
-      
+        [OperationContract]
+        public Task<List<Contratos>> GetAll(); // PUBLIC 
+
     }
 }
