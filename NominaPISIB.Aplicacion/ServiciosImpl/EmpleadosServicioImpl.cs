@@ -68,7 +68,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
 
         public async Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname)
         {
-            return await _repo.ObtenerEmpleadoPorNombre(name, lastname);
+            try { return await _repo.ObtenerEmpleadoPorNombre(name, lastname); }
+            catch (Exception e) {
+
+                throw new Exception("Error - EmpleadosServicoImpl : no se puede hallar el dato");
+            }
         }
 
        

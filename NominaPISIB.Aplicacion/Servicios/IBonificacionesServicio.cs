@@ -13,13 +13,13 @@ namespace NominaPISIB.Aplicacion.Servicios
     public interface IBonificacionesServicio : IService<Bonificaciones>
     {
         [OperationContract]
-<<<<<<< HEAD
+
         Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
         [OperationContract]
         decimal CalcularBonificacionesDeEmpleadoPorAnioYMes(List<BonificacionesEmpleadoDTO> lista);
-=======
-        Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month); // si no funciona es con BonificacionesEmpleadoDTO 
->>>>>>> 437c55fe5fc42416a02743bca2cb0611be6c3432
+
+        //ya realizado arriba
+       // Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month); // si no funciona es con BonificacionesEmpleadoDTO 
 
     }
 }

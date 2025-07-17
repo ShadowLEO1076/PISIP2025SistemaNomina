@@ -20,23 +20,20 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             {
-                var fecha = year;
-
-                var empleados =
+                return await
                     _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname)
                     .Select(dto => new DescuentosEmpleadosDTO
                     {
                         NombresCompletos = dto.EmpleadoNombres + dto.EmpleadoApellidos,
-                        boniYear = fecha,
+                        boniYear = year,
 
-                        Descuentos = dto.Descuentos.Where(d => (d.DescuentoFecha.Year == fecha)).Select(d => new DescuentoDTO
+                        Descuentos = dto.Descuentos.Where(d => (d.DescuentoFecha.Year == year)).Select(d => new DescuentoDTO
                         {
                             descuentoFecha = d.DescuentoFecha,
                             descuentoMonto = d.DescuentoMonto,
                         }).ToList()
                     }).Where(bonoAux => bonoAux.Descuentos.Any()).ToListAsync();
 
-                return await empleados;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
@@ -72,7 +69,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             {
                 var hoy = DateOnly.FromDateTime(DateTime.Today);
 
-                var empleadosConContratoActual = await
+                return await
                     _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname && emp.EmpleadoEstado == "1" | emp.EmpleadoEstado == "Activo")
                     .Select(e => new EmpleadosContratoActivoDTO
                     {
@@ -101,8 +98,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                         .Select(c => c.ContratoSalario)
                         .FirstOrDefault()
                     }).FirstAsync();
-
-                return empleadosConContratoActual;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
@@ -348,10 +343,8 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             { 
-                var empleado =
-                    _context.Empleados.Where(e => e.EmpleadoNombres == name && e.EmpleadoApellidos == lastname).FirstOrDefault();
-
-                return empleado;
+                return await
+                    _context.Empleados.Where(e => e.EmpleadoNombres == name && e.EmpleadoApellidos == lastname).FirstOrDefaultAsync();
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : no se puede encontrar dato"); }
         }

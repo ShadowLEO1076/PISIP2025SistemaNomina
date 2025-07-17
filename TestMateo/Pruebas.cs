@@ -30,7 +30,7 @@ namespace TestMateo
             _boniServ = new BonificacionesServicioImpl(_context);
             _descServ = new DescuentosServicioImpl(_context) ;
             _inasServ = new InasistenciasServicioImpl(_context ) ;
-            _nomiServ = new NominasServicioImpl(_context);
+            //_nomiServ = new NominasServicioImpl(_context);
         }
 
         [Test]

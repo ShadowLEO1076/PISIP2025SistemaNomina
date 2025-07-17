@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NominaPISIB.Aplicacion.DTO.DTOs;
 using NominaPISIB.Aplicacion.Servicios;
 using NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -8,25 +9,44 @@ namespace Nomina.API.Controllers
     [Route("api/[controller]")]
     public class NominaControlador : ControllerBase
     {
-        private readonly INominasServicio _nominaservicio;
+        private readonly INominasServicio _nominaServicio;
 
         public NominaControlador(INominasServicio nominaservicio)
         {
-            _nominaservicio = nominaservicio;
+            _nominaServicio = nominaservicio;
         }
 
+        [HttpPost("InsertarAutomaticamente")]
+        public async Task<IActionResult> InsertarNominaAutomatizado([FromBody] NominasApiDTO request)
+        {
+            try
+            {
+                    await _nominaServicio.InsertarNominaAutomatizado(
+                    request.name,
+                    request.lastname,
+                    request.year,
+                    request.month
+                );
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                // Loguear el error si es necesario
+                return StatusCode(500, new { error = "Error al insertar la nómina", details = ex.Message });
+            }
+        }
         // este método es para listar todas las nóminas de los empleados
         [HttpGet("ListarNominasEmpleados")]
-        public Task<IEnumerable<Nominas>> GetAllasync()
+        public async Task<IEnumerable<Nominas>> GetAllasync()
         {
-            return _nominaservicio.GetAllAsync();
+            return await _nominaServicio.GetAllAsync();
         }
 
         // este método obtiene una nómina específica por su ID
         [HttpGet("ObtenerNomina/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
-            var nomina = await _nominaservicio.GetByIdAsync(id);
+            var nomina = await _nominaServicio.GetByIdAsync(id);
             if (nomina == null)
             {
                 return NotFound($"Nómina con ID {id} no encontrada.");
@@ -45,7 +65,7 @@ namespace Nomina.API.Controllers
 
             try
             {
-                await _nominaservicio.AddAsync(nomina);
+                await _nominaServicio.AddAsync(nomina);
                 return CreatedAtAction(nameof(GetByIdAsync), new { id = nomina.idNomina }, nomina);
             }
             catch (Exception ex)
@@ -65,7 +85,7 @@ namespace Nomina.API.Controllers
 
             try
             {
-                await _nominaservicio.UpdateAsync(nomina);
+                await _nominaServicio.UpdateAsync(nomina);
                 return NoContent();
             }
             catch (Exception ex)
@@ -78,7 +98,7 @@ namespace Nomina.API.Controllers
         [HttpDelete("EliminarNomina/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
-            var nomina = await _nominaservicio.GetByIdAsync(id);
+            var nomina = await _nominaServicio.GetByIdAsync(id);
             if (nomina == null)
             {
                 return NotFound($"Nómina con ID {id} no encontrada.");
@@ -86,7 +106,7 @@ namespace Nomina.API.Controllers
 
             try
             {
-                await _nominaservicio.DeleteAsync(nomina);
+                await _nominaServicio.DeleteAsync(nomina);
                 return NoContent();
             }
             catch (Exception ex)

@@ -22,18 +22,19 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         IAsistenciasServicio asis;
         IInasistenciasServicio inas;
 
-
-        public NominasServicioImpl(NominaPISIBContext context) : base(context)
+        public NominasServicioImpl(INominasRepo repo, 
+            NominaPISIBContext context, IEmpleadosServicio empl, 
+            IBonificacionesServicio boni, IDescuentosServicio desc, 
+            IAsistenciasServicio asis, IInasistenciasServicio inas) : base(context)
         {
-            _context = context;   // leo
-            _repo = new NominasRepoImpl(context);
-            empl = new EmpleadosServicioImpl(context);
-            boni = new BonificacionesServicioImpl(context);
-            desc = new DescuentosServicioImpl(context);
-            asis = new AsistenciasServicioImpl(context);
-            inas = new InasistenciasServicioImpl(context);
+            _repo = repo;
+            _context = context;
+            this.empl = empl;
+            this.boni = boni;
+            this.desc = desc;
+            this.asis = asis;
+            this.inas = inas;
         }
-
 
         public async Task InsertarNominaAutomatizado(string name, string lastname, int year, int month)
         {

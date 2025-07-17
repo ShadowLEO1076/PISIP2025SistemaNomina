@@ -20,7 +20,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try 
             {
-                var descuentos =
+                return await
                     _context.Descuentos.Include(d => d.idEmpleadoNavigation)
                     .Where(d => d.idEmpleadoNavigation.EmpleadoNombres == name && d.idEmpleadoNavigation.EmpleadoApellidos == lastname
                     && d.DescuentoFecha.Year == year && d.DescuentoFecha.Month == month).GroupBy(d => new
@@ -37,7 +37,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                         }).ToList()
                     }).ToListAsync();
 
-                return await descuentos;
             }
             catch (Exception ex)
             {

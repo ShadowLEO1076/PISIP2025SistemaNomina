@@ -21,21 +21,21 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             {
-                var asistenciaActual = _context.Asistencias.Include(a => a.FKidEmpleadoNavigation)
-                    .Where(a => a.FKidEmpleadoNavigation.EmpleadoNombres == name && a.FKidEmpleadoNavigation.EmpleadoApellidos == lastname &&
-                    a.AsistenciaFecha.Year == year && a.AsistenciaFecha.Month == month).GroupBy(a => new
-                    {
-                        NombreCompleto = a.FKidEmpleadoNavigation.EmpleadoNombres + " " + a.FKidEmpleadoNavigation.EmpleadoApellidos
-                    })
-                    .Select(g => new AsistenciasEmpleadosDTO
-                    {
-                        NombresCompletos = g.Key.NombreCompleto,
-                        Asistencias = g.Select(a => new AsistenciaDTO { AsistenciaDTOFecha = a.AsistenciaFecha }).ToList()
-                    }
-                    ).ToListAsync();
-
-                return await asistenciaActual;
+                return await _context.Asistencias.Include(a => a.FKidEmpleadoNavigation)
+               .Where(a => a.FKidEmpleadoNavigation.EmpleadoNombres == name && a.FKidEmpleadoNavigation.EmpleadoApellidos == lastname &&
+               a.AsistenciaFecha.Year == year && a.AsistenciaFecha.Month == month).GroupBy(a => new
+               {
+                   NombreCompleto = a.FKidEmpleadoNavigation.EmpleadoNombres + " " + a.FKidEmpleadoNavigation.EmpleadoApellidos
+               })
+               .Select(g => new AsistenciasEmpleadosDTO
+               {
+                   NombresCompletos = g.Key.NombreCompleto,
+                   Asistencias = g.Select(a => new AsistenciaDTO { AsistenciaDTOFecha = a.AsistenciaFecha }).ToList()
+               }
+               ).ToListAsync();
             }
+
+
             catch (Exception ex) { throw new Exception("Error - AsistenciasRepoImpl: no se puede obtener el dato" + ex.Message); }
         }
     }
