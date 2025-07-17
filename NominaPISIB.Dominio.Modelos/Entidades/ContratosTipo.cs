@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -12,6 +13,6 @@ public partial class ContratosTipo
     public string ContratoJornada { get; set; }
 
     public string ContratoTipoNombre { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Contratos> Contratos { get; set; } = new List<Contratos>();
 }
