@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -12,6 +13,6 @@ public partial class Licencias
     public string LicenciaNombre { get; set; }
 
     public int LicenciaRemunerable { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<Inasistencias> Inasistencias { get; set; } = new List<Inasistencias>();
 }

@@ -239,11 +239,11 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 
                         Anio = anio,
                         Mes = mes,
-                        
+                        /*
                         TotalHorasExtras = e.Nominas
                             .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
                             .Select(n => n.NominaHorasExtra)
-                            .FirstOrDefault(),
+                            .FirstOrDefault(),*/
 
                         TotalBonificaciones = e.Nominas
                             .Where(n => (n.NominaFechaEmision.Month == mes) && (n.NominaFechaEmision.Year == anio))
