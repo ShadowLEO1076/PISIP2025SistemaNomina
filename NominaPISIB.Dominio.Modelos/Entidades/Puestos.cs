@@ -13,8 +13,6 @@ public partial class Puestos
     public string PuestoNombre { get; set; }
 
     public decimal PuestoSalario { get; set; }
-
-    public int PuestoVacacionesCantidad { get; set; }
     [JsonIgnore]
     public virtual ICollection<Empleados> Empleados { get; set; } = new List<Empleados>();
 }

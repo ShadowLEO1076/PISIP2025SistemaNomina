@@ -16,7 +16,7 @@ namespace Nomina.API.Controllers
             _solicitudvacaciones = solicitudvacaciones;
         }
 
-        [HttpGet("Listar Empleados Vacaciones")]
+        [HttpGet("ListarEmpleadosVacaciones")]
 
         // este metodo es para listar las solicitudes de vacaciones
         public Task<IEnumerable<SolicitudVacaciones>> GetAllasync()
@@ -30,7 +30,7 @@ namespace Nomina.API.Controllers
 
         }
         // voy a crear un metodo para agregar una solicitud de vacaciones
-        [HttpPost("Agregar Solicitud Vacaciones")]
+        [HttpPost("AgregarSolicitudVacaciones")]
         public async Task<IActionResult> AddAsync([FromBody] SolicitudVacaciones solicitudVacaciones)
         {
             if (solicitudVacaciones == null)
@@ -52,7 +52,7 @@ namespace Nomina.API.Controllers
 
         }
         // voy a crear un metodo para eliminar una solicitud de vacaciones
-        [HttpDelete("Eliminar Solicitud Vacaciones/{id}")]
+        [HttpDelete("EliminarSolicitudVacaciones/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var solicitudVacaciones = await _solicitudvacaciones.GetByIdAsync(id);
@@ -71,7 +71,7 @@ namespace Nomina.API.Controllers
             }
         }
         // voy a crear un metodo para actualizar una solicitud de vacaciones
-        [HttpPut("Actualizar Solicitud Vacaciones")]
+        [HttpPut("ActualizarSolicitudVacaciones")]
         public async Task<IActionResult> UpdateAsync([FromBody] SolicitudVacaciones solicitudVacaciones)
         {
             if (solicitudVacaciones == null)

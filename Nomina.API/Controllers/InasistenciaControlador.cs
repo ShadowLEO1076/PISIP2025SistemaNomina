@@ -16,14 +16,14 @@ namespace Nomina.API.Controllers
         }
 
         // Listar todas las inasistencias
-        [HttpGet("Listar Inasistencias")]
+        [HttpGet("ListarInasistencias")]
         public Task<IEnumerable<Inasistencias>> GetAllasync()
         {
             return _inasistenciaServicio.GetAllAsync();
         }
 
         // Obtener inasistencia por ID
-        [HttpGet("Obtener Inasistencia/{id}")]
+        [HttpGet("ObtenerInasistencia/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var inasistencia = await _inasistenciaServicio.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace Nomina.API.Controllers
         }
 
         // Agregar una nueva inasistencia
-        [HttpPost("Agregar Inasistencia")]
+        [HttpPost("AgregarInasistencia")]
         public async Task<IActionResult> AddAsync([FromBody] Inasistencias inasistencia)
         {
             if (inasistencia == null)
@@ -55,7 +55,7 @@ namespace Nomina.API.Controllers
         }
 
         // Actualizar una inasistencia
-        [HttpPut("Actualizar Inasistencia")]
+        [HttpPut("ActualizarInasistencia")]
         public async Task<IActionResult> UpdateAsync([FromBody] Inasistencias inasistencia)
         {
             if (inasistencia == null)
@@ -75,7 +75,7 @@ namespace Nomina.API.Controllers
         }
 
         // Eliminar una inasistencia por ID
-        [HttpDelete("Eliminar Inasistencia/{id}")]
+        [HttpDelete("EliminarInasistencia/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var inasistencia = await _inasistenciaServicio.GetByIdAsync(id);
