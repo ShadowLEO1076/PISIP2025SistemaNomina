@@ -12,18 +12,15 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IEmpleadosServicio : IService<Empleados>
     {
-        [OperationContract]
-        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista);
-
-        [OperationContract]
-        public decimal CalcularDescuentosDeEmpleadoPorAnioYMes(List<DescuentosEmpleadosDTO> lista);
         
+        /* Inutilizada, movida a iDescuestosServicio
         [OperationContract]
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
-
+        */
+         /*  No usada, movida a Bonificaciones
         [OperationContract]
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
-
+        */
         // hace lo que dice. Ya implementada -> Mateo Vasquez
         [OperationContract]
         public Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname);
@@ -41,14 +38,14 @@ namespace NominaPISIB.Aplicacion.Servicios
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
         // hace lo que dice. Ya implementada -> Mateo Vasquez
-        [OperationContract]
+        //[OperationContract]
 
         // aqui es para ReporteNominaMensualDTO
-        Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
+       // Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 
-        [OperationContract]
+        //[OperationContract]
         // aqui es para ReporteDescuentosNominaDTO
-        Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
+       // Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
 
         [OperationContract]
         // aqui es para ReporteEmpleadosInasistenciasLicenciaDTO

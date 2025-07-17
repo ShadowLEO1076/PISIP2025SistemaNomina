@@ -23,24 +23,25 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
         // Permite ver los descuentos del empleado a lo largo de un año específico. -> Mateo Vasquez
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnio(string name, string lastname, int year);
 
+        /* Inutilizada, movida a DescuentosRepo, tanto Interfaz como servicio
         //Hace lo que dice, después de este necesitamos crear un método que permita contar el total -> Mateo Vasquez
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+        */
 
         // Permite ver las bonificaciones del empleado a lo largo de un año específico. -> Mateo Vasquez
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year);
 
         //Hace lo que dice, después de este necesitamos crear un método que permita contar el total, eso debe hacerse en servicio -> Mateo Vasquez
-        public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
 
         // Permite ver el historial de contratos del empleado. -> Mateo Vasquez
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
         // aqui voy agregregar lo de arriba pero enfocado para ReporteNominaMensualDTO
 
-        public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
+        //public Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 
         // para reporte nomina mensual dto
-        public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
+       // public Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
 
         // para ReporteEmpleadosInasistenciasLicenciaDTO
 

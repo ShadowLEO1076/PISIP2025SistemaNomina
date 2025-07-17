@@ -10,5 +10,7 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
     public interface IBonificacionesRepo : IRepository<Bonificaciones>
     {
+
+        Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
     }
 }
