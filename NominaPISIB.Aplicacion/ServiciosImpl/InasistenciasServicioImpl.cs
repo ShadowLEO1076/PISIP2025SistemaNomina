@@ -48,5 +48,26 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
 
             return total;
         }
+
+        public int ContabilizarInasistenciasRemunerables(List<InasistenciasEmpleadosDTO> lista)
+        {
+            int total = 0;
+
+            foreach (InasistenciasEmpleadosDTO empleado in lista)
+            {
+                foreach (InasistenciaDTO inasistencia in empleado.Inasistencias)
+                {
+                    if(inasistencia.LicenciaRemunerable == 1)
+                        total += 1; 
+                }
+            }
+
+            return total;
+        }
+
+        public int ContabilizarInasistenciasNoRemunerables(List<InasistenciasEmpleadosDTO> lista)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

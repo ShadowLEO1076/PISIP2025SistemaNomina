@@ -39,9 +39,9 @@ namespace TestMateo
             //await _puestosServ.UpdateAsync( puestoPrueba );
 
             //var prueba = await _empleServ.ObtenerContratoActivoEmpleados();
-            //var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Mateo", "Vasquez");
+            var prueba2 = await _empleServ.ObtenerHistorialPorEmpleado("Juan", "Pérez");
 
-            //Console.WriteLine( prueba2 );
+            Console.WriteLine( prueba2 );
 
             //var prueba3 = await _empleServ.ObtenerBonificacionesDeEmpleadoPorAnio("Mateo", "Vasquez", 2025);
             //Console.WriteLine( prueba3 );
@@ -67,10 +67,11 @@ namespace TestMateo
             Console.WriteLine(asisTotal);
             */
 
-            
+            /*
             var pruebaInas = await _inasServ.ObtenerInasistenciasEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 5);
             var inasisTotal = _inasServ.ContabilizarInasistencias(pruebaInas);
             Console.WriteLine(inasisTotal);
+            */
             Assert.Pass();
         }
 

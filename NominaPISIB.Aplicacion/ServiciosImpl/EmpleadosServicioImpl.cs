@@ -37,24 +37,25 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
         // para reporte nomina mensual dto
-
+        /*
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
 
             return await _repo.ObtenerReporteNominaMensual(mes, anio);
         }
+        */
         // para reporte inacistencias licencia dto
         public async Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio)
         {
             return await _repo.ObtenerReporteEmpleadosInasistenciasLicencia(mes, anio);
         }
 
-
+        /*
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
         }
-
+        */
         public async Task<List<Empleados>> ObtenerEmpleadosActivos()
         {
             return await _repo.ObtenerEmpleadosActivos();

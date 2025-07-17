@@ -38,14 +38,14 @@ namespace NominaPISIB.Aplicacion.Servicios
         public Task<List<HistorialContratoEmpleados>> ObtenerHistorialPorEmpleado(string nameEmpl, string lastnameEmpl);
 
         // hace lo que dice. Ya implementada -> Mateo Vasquez
-        [OperationContract]
+        //[OperationContract]
 
         // aqui es para ReporteNominaMensualDTO
-        Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
+       // Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio);
 
-        [OperationContract]
+        //[OperationContract]
         // aqui es para ReporteDescuentosNominaDTO
-        Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
+       // Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio);
 
         [OperationContract]
         // aqui es para ReporteEmpleadosInasistenciasLicenciaDTO
