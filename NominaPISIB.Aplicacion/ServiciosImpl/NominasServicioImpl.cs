@@ -16,19 +16,73 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         private INominasRepo _repo;
         private readonly NominaPISIBContext _context;
 
+        IEmpleadosServicio empl;
+        IBonificacionesServicio boni;
+        IDescuentosServicio desc;
+        IAsistenciasServicio asis;
+        IInasistenciasServicio inas;
+
+
         public NominasServicioImpl(NominaPISIBContext context) : base(context)
         {
             _context = context;   // leo
             _repo = new NominasRepoImpl(context);
+            empl = new EmpleadosServicioImpl(context);
+            boni = new BonificacionesServicioImpl(context);
+            desc = new DescuentosServicioImpl(context);
+            asis = new AsistenciasServicioImpl(context);
+            inas = new InasistenciasServicioImpl(context);
         }
 
 
         public async Task InsertarNominaAutomatizado(string name, string lastname, int year, int month)
         {
+            //LO QUE ENVIAREMOS AL FINAL DE ESTA FUNCion
+            Nominas nomina;
             //usar los servicios para llenar la nomina: empleados, bonificaciones, descuentos, asistencias, inasistencias
+            var empleado = await empl.ObtenerEmpleadoPorNombre(name, lastname);
+            var contrato = await empl.ObtenerContratoActivoPorEmpleado(name, lastname);
+            var bonifica = await boni.ObtenerBonificacionesDeEmpleadoPorAnioYMes(name, lastname, year, month);
+            var descu = await desc.ObtenerDescuentosDeEmpleadoPorAnioYMes(name, lastname, year, month);
+            var asiste =  await asis.ObtenerAsistenciasEmpleadoPorAnioYMes(name, lastname, year, month);
+            var inasiste = await inas.ObtenerInasistenciasEmpleadoPorAnioYMes(name, lastname, year, month);
+            //ahora cálculos tanto de boni, descu, asis e inas
+            decimal boniCalc = boni.CalcularBonificacionesDeEmpleadoPorAnioYMes(bonifica);
+            decimal descuCalc = desc.CalcularDescuentosDeEmpleadoPorAnioYMes(descu);
+            int asisteCalc = asis.ContabilizarAsistencias(asiste);
+            int inasisteCalcRemu = inas.ContabilizarInasistenciasRemunerables(inasiste); // insistencias remunerables, añade 
+            int inasisteCalcNoRemu = inas.ContabilizarInasistenciasNoRemunerables(inasiste); // inasistencias no remunerables
+            //datos necesario para calcular Salario neto
+            int diasTrabajados = asisteCalc + inasisteCalcRemu - inasisteCalcNoRemu;
+            decimal salarioBruto = contrato.Salario;
+            //calculo de salarioNeto
+            decimal salrioNetoResult = CalcularSalarioNeto(salarioBruto, diasTrabajados);
+
+            nomina = new Nominas
+            {
+                idEmpleado = empleado.idEmpleado,
+                NominaAnio = year,
+                NominaBonificaciones = boniCalc,
+                NominaDescuentos = descuCalc,
+                NominaMes = month,
+                NominaSalarioBase = salarioBruto,
+                NominaSalarioNeto = salrioNetoResult,
+                NominaFechaEmision = DateOnly.FromDateTime(DateTime.Today),
+            };
+
+            await _repo.AddAsync(nomina);
             
         }
 
+
+        public decimal CalcularSalarioNeto(decimal salaritoBruto, int diasTrabajados)
+        {
+            var salarioDia = salaritoBruto / 30; // el salario mensual por día siempre se divide para 30 días
+
+            var salarioNeto = salarioDia * diasTrabajados; //ese salrio dario lo multiplicamos por días laborados
+
+            return salarioNeto;
+        }
         public Task<bool> ActualizarNominaAsync(int nominaId, DateTime nuevaFechaPago, decimal nuevoMonto)
         {
             throw new NotImplementedException();

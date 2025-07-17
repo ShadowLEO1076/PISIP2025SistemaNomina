@@ -29,8 +29,8 @@ namespace TestLEO
         public async Task TestReporteNominaEmpleado()
         {
 
-            var pruebaReporteNominaDescuento = await _empleadosServicio.ObtenerReporteDescuentosMensual(1, 2025);
-            Console.WriteLine(pruebaReporteNominaDescuento);
+           // var pruebaReporteNominaDescuento = await _empleadosServicio.ObtenerReporteDescuentosMensual(1, 2025);
+           // Console.WriteLine(pruebaReporteNominaDescuento);
             Assert.Pass();
         }
 

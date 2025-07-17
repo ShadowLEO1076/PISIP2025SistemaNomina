@@ -67,7 +67,18 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
 
         public int ContabilizarInasistenciasNoRemunerables(List<InasistenciasEmpleadosDTO> lista)
         {
-            throw new NotImplementedException();
+            int total = 0;
+
+            foreach (InasistenciasEmpleadosDTO empleado in lista)
+            {
+                foreach (InasistenciaDTO inasistencia in empleado.Inasistencias)
+                {
+                    if (inasistencia.LicenciaRemunerable == 0)
+                        total += 1;
+                }
+            }
+
+            return total;
         }
     }
 }

@@ -66,6 +66,47 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
 
+        public async Task<EmpleadosContratoActivoDTO> ObtenerContratoActivoPorEmpleado(string name, string lastname)
+        {
+            try
+            {
+                var hoy = DateOnly.FromDateTime(DateTime.Today);
+
+                var empleadosConContratoActual = await
+                    _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname && emp.EmpleadoEstado == "1" | emp.EmpleadoEstado == "Activo")
+                    .Select(e => new EmpleadosContratoActivoDTO
+                    {
+                        NombresCompletos = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
+                        Correo = e.EmpleadoCorreo,
+                        Genero = e.EmpleadoGenero,
+                        FechaIngreso = e.EmpleadoFechaIngreso,
+                        Telefono = e.EmpleadoTelfPersonal,
+
+
+                        FechaInicioContrato = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.FechaInicioContrato)
+                        .FirstOrDefault(),
+
+                        FechaFinContrato = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.ContratoFechaFin)
+                        .FirstOrDefault(),
+
+                        Salario = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.ContratoSalario)
+                        .FirstOrDefault()
+                    }).FirstAsync();
+
+                return empleadosConContratoActual;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
         public async Task<List<EmpleadosContratoActivoDTO>> ObtenerContratoActivoEmpleados()
         {
             try
@@ -315,6 +356,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : no se puede encontrar dato"); }
         }
 
+        
         /* inutilizado, mandado a DescuentoRepoImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {

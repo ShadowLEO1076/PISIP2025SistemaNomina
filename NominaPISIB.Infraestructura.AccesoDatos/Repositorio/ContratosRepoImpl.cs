@@ -14,6 +14,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             this._context = context;
         }
+
     }
     
 }
