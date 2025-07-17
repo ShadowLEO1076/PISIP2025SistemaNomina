@@ -21,7 +21,7 @@ namespace Nomina.API.Controllers
             return _servicio.GetAllAsync();
         }
 
-        [HttpGet("/{id}")] //-> Si ponemos un prefijo como AprobacionVacaciones/{id} no funciona
+        [HttpGet("BuscarPorId/{id}")] //-> Si ponemos un prefijo como AprobacionVacaciones/{id} no funciona
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var aprobVac = await _servicio.GetByIdAsync(id);
@@ -29,7 +29,7 @@ namespace Nomina.API.Controllers
             if(aprobVac == null)
             {
                 Console.WriteLine($"Error : no se halló el dato");
-                return StatusCode(500, "Error interno");
+                return StatusCode(500, "Error interno : el dato no existe en la base de datos");
             }
 
             return Ok(aprobVac);

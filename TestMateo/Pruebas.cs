@@ -13,6 +13,7 @@ namespace TestMateo
         private IAsistenciasServicio _asisServ;
         private IBonificacionesServicio _boniServ;
         private IDescuentosServicio _descServ;
+        private IInasistenciasServicio _inasServ;
 
         [SetUp]
         public void Setup()
@@ -27,6 +28,7 @@ namespace TestMateo
             _asisServ = new AsistenciasServicioImpl(_context);
             _boniServ = new BonificacionesServicioImpl(_context);
             _descServ = new DescuentosServicioImpl(_context) ;
+            _inasServ = new InasistenciasServicioImpl(_context ) ;
         }
 
         [Test]
@@ -55,9 +57,20 @@ namespace TestMateo
             /*var pruebaBoni = await _boniServ.ObtenerBonificacionesDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
             Console.WriteLine( pruebaBoni );^*/
 
-            var pruebaDesc = await _descServ.ObtenerDescuentosDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
-            Console.WriteLine(pruebaDesc);
+            //var pruebaDesc = await _descServ.ObtenerDescuentosDeEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7);
+            //Console.WriteLine(pruebaDesc);
 
+            /*
+            var pruebaAsis = await _asisServ.ObtenerAsistenciasEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 7)
+                ;
+             var asisTotal = _asisServ.ContabilizarAsistencias(pruebaAsis);
+            Console.WriteLine(asisTotal);
+            */
+
+            
+            var pruebaInas = await _inasServ.ObtenerInasistenciasEmpleadoPorAnioYMes("Mateo", "Vasquez", 2025, 5);
+            var inasisTotal = _inasServ.ContabilizarInasistencias(pruebaInas);
+            Console.WriteLine(inasisTotal);
             Assert.Pass();
         }
 

@@ -13,6 +13,9 @@ namespace NominaPISIB.Aplicacion.Servicios
 
     // : IService<Nominas> METODOS PARA CRUD DE NOMINAS -> esto ya lo tenemos gracias al genérico
     {
+        [OperationContract]
+        // usará muchos métodos para al final usar el AddAsync
+        public Task InsertarNominaAutomatizado(string name, string lastname, int year, int month);
         /*
         [OperationContract]
         Task<bool> RegistrarNominaAsync(int empleadoId, DateTime fechaPago, decimal monto);
@@ -33,9 +36,9 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<bool> NotificarNominaEliminadaAsync(int nominaId, string mensajeNotificacion);
         */
-        
-        
-        
+
+
+
 
 
     }

@@ -24,14 +24,29 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
 
         public async Task<List<InasistenciasEmpleadosDTO>> ObtenerInasistenciasEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {
-            try 
+            try
             {
                 return await _repo.ObtenerInasistenciasEmpleadoPorAnioYMes(name, lastname, year, month);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                throw new Exception($"Error - InasistenciasServicioImpl : no se puede traer los datos. {ex.Message}"); 
+                throw new Exception($"Error - InasistenciasServicioImpl : no se puede traer los datos. {ex.Message}");
             }
+        }
+
+        public int ContabilizarInasistencias(List<InasistenciasEmpleadosDTO> lista)
+        {
+            int total = 0;
+
+            foreach (InasistenciasEmpleadosDTO empleado in lista)
+            {
+                foreach (InasistenciaDTO inasistencia in empleado.Inasistencias)
+                {
+                    total += 1;
+                }
+            }
+
+            return total;
         }
     }
 }
