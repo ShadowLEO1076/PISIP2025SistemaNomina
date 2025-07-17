@@ -16,14 +16,14 @@ namespace Nomina.API.Controllers
         }
 
         // Listar todas las licencias
-        [HttpGet("Listar Licencias")]
+        [HttpGet("ListarLicencias")]
         public Task<IEnumerable<Licencias>> GetAllasync()
         {
             return _licenciasServicio.GetAllAsync();
         }
 
         // Obtener una licencia por ID
-        [HttpGet("Obtener Licencia/{id}")]
+        [HttpGet("ObtenerLicencia/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var licencia = await _licenciasServicio.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace Nomina.API.Controllers
         }
 
         // Agregar nueva licencia
-        [HttpPost("Agregar Licencia")]
+        [HttpPost("AgregarLicencia")]
         public async Task<IActionResult> AddAsync([FromBody] Licencias licencia)
         {
             if (licencia == null)
@@ -55,7 +55,7 @@ namespace Nomina.API.Controllers
         }
 
         // Actualizar licencia existente
-        [HttpPut("Actualizar Licencia")]
+        [HttpPut("ActualizarLicencia")]
         public async Task<IActionResult> UpdateAsync([FromBody] Licencias licencia)
         {
             if (licencia == null)
@@ -75,7 +75,7 @@ namespace Nomina.API.Controllers
         }
 
         // Eliminar licencia por ID
-        [HttpDelete("Eliminar Licencia/{id}")]
+        [HttpDelete("EliminarLicencia/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var licencia = await _licenciasServicio.GetByIdAsync(id);

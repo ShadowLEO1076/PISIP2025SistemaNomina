@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -20,8 +21,8 @@ public partial class SolicitudVacaciones
     public int SolicitudVacacionDiasTotales { get; set; }
 
     public int SolicitudVacacionEstado { get; set; }
-
+    [JsonIgnore]
     public virtual ICollection<AprobacionVacaciones> AprobacionVacaciones { get; set; } = new List<AprobacionVacaciones>();
-
+    [JsonIgnore]
     public virtual Empleados idEmpleadoNavigation { get; set; }
 }
