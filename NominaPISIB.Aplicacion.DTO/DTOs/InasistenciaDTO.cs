@@ -8,8 +8,8 @@ namespace NominaPISIB.Aplicacion.DTO.DTOs
 {
     public class InasistenciaDTO
     {
-        public int idLicencia { get; set; }
-
+        public string LicenciaNombre { get; set; }
+        public int LicenciaRemunerable { get; set; }
         public DateOnly InasistenciaFecha { get; set; }
     }
 }

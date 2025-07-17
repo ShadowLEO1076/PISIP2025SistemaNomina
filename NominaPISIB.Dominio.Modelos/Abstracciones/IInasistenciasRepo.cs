@@ -10,6 +10,6 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
 {
     public interface IInasistenciasRepo : IRepository<Inasistencias>
     {
-        Task<List<InasistenciasEmpleadosDTO>> ObtenerAsistenciasEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+        Task<List<InasistenciasEmpleadosDTO>> ObtenerInasistenciasEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
     }
 }

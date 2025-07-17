@@ -70,36 +70,6 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         {
            return await _repo.ObtenerDescuentosDeEmpleadoPorAnioYMes(name, lastname, year, month);
         }*/
-
-        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista)
-        {
-            decimal totalValor = 0;
-
-            foreach(BonificacionesEmpleadoDTO empleado in lista) 
-            {
-                foreach(BonificacionesDTO boni in empleado.bonificaciones)
-                {
-                    totalValor = boni.BonificacionMonto + totalValor;
-                }
-            }
-
-            return totalValor;
-        }
-
-        public decimal CalcularDescuentosDeEmpleadoPorAnioYMes(List<DescuentosEmpleadosDTO> lista)
-        {
-            decimal totalValor = 0;
-
-            foreach (DescuentosEmpleadosDTO empleado in lista)
-            {
-                foreach (DescuentoDTO desc in empleado.Descuentos)
-                {
-                    totalValor = desc.descuentoMonto + totalValor;
-                }
-            }
-
-            return totalValor;
-        }
     }
 
 }  
