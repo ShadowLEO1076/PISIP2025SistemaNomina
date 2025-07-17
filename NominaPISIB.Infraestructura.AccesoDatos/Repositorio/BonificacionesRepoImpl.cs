@@ -11,9 +11,35 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
 {
     public class BonificacionesRepoImpl : RepositorioImpl<Bonificaciones>, IBonificacionesRepo
     {
-   
+        private readonly NominaPISIBContext _context;
         public BonificacionesRepoImpl(NominaPISIBContext context) : base(context)
         {
+            this._context = context;
+        }
+
+        public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
+        {
+            try 
+            {
+                var boniActual =
+                    _context.Bonificaciones.Include(b => b.idEmpleadoNavigation)
+                    .Where(b => b.idEmpleadoNavigation.EmpleadoNombres == name && b.idEmpleadoNavigation.EmpleadoApellidos == lastname &&
+                    b.BonificacionFecha.Year == year && b.BonificacionFecha.Month == month).GroupBy(e => new
+                    {
+                        NombreCompleto = e.idEmpleadoNavigation.EmpleadoNombres + " " + e.idEmpleadoNavigation.EmpleadoApellidos
+                    }).Select(g => new BonificacionesEmpleadoDTO
+                    {
+                        NombresCompletos = g.Key.NombreCompleto,
+                        boniYear = year,
+                        bonificaciones = g.Select(b => new BonificacionesDTO { 
+                            BonificacionFecha  = b.BonificacionFecha,
+                            BonificacionMonto = b.BonificacionMonto
+                        }).ToList()
+                    }).ToListAsync();
+
+                return await boniActual;
+            }
+            catch(Exception ex) { throw new Exception("Error - BonificacionesRepoImpl : no se pudo hallar los datos. " + ex.Message); }
         }
     }
 }

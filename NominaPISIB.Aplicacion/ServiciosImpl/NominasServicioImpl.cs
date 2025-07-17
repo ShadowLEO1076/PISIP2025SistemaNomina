@@ -22,6 +22,13 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             _repo = new NominasRepoImpl(context);
         }
 
+
+        public async Task InsertarNominaAutomatizado(string name, string lastname, int year, int month)
+        {
+            //usar los servicios para llenar la nomina: empleados, bonificaciones, descuentos, asistencias, inasistencias
+            
+        }
+
         public Task<bool> ActualizarNominaAsync(int nominaId, DateTime nuevaFechaPago, decimal nuevoMonto)
         {
             throw new NotImplementedException();
@@ -67,6 +74,5 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             throw new NotImplementedException();
         }
 
-        
     }
 }

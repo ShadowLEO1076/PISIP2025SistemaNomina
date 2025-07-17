@@ -37,24 +37,25 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
         }
 
         // para reporte nomina mensual dto
-
+        /*
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
 
             return await _repo.ObtenerReporteNominaMensual(mes, anio);
         }
+        */
         // para reporte inacistencias licencia dto
         public async Task<List<ReporteEmpleadosInasistenciasLicenciaDTO>> ObtenerReporteEmpleadosInasistenciasLicencia(int mes, int anio)
         {
             return await _repo.ObtenerReporteEmpleadosInasistenciasLicencia(mes, anio);
         }
 
-
+        /*
         public async Task<List<ReporteDescuentosNominaDTO>> ObtenerReporteDescuentosMensual(int mes, int anio)
         {
             return await _repo.ObtenerReporteDescuentosMensual(mes, anio);
         }
-
+        */
         public async Task<List<Empleados>> ObtenerEmpleadosActivos()
         {
             return await _repo.ObtenerEmpleadosActivos();
@@ -65,45 +66,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             return await _repo.ObtenerEmpleadoPorNombre(name, lastname);
         }
 
+        /* Inutilizado, mandado a DescuestosServicioImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {
            return await _repo.ObtenerDescuentosDeEmpleadoPorAnioYMes(name, lastname, year, month);
-        }
-
-        public async Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
-        {
-            return await _repo.ObtenerBonificacionesDeEmpleadoPorAnioYMes(name, lastname, year, month);
-        }
-
-        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista)
-        {
-            decimal totalValor = 0;
-
-            foreach(BonificacionesEmpleadoDTO empleado in lista) 
-            {
-                foreach(BonificacionesDTO boni in empleado.bonificaciones)
-                {
-                    totalValor = boni.BonificacionMonto + totalValor;
-                }
-            }
-
-            return totalValor;
-        }
-
-        public decimal CalcularDescuentosDeEmpleadoPorAnioYMes(List<DescuentosEmpleadosDTO> lista)
-        {
-            decimal totalValor = 0;
-
-            foreach (DescuentosEmpleadosDTO empleado in lista)
-            {
-                foreach (DescuentoDTO desc in empleado.Descuentos)
-                {
-                    totalValor = desc.descuentoMonto + totalValor;
-                }
-            }
-
-            return totalValor;
-        }
+        }*/
     }
 
 }  

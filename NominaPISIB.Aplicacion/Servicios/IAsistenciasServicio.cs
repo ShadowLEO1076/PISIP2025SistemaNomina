@@ -15,6 +15,9 @@ namespace NominaPISIB.Aplicacion.Servicios
         //hace lo que dice, con esto podremos hacer la nómina -> Mateo Vasquez
         [OperationContract]
         Task<List<AsistenciasEmpleadosDTO>> ObtenerAsistenciasEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
-       
+        [OperationContract]
+        public int ContabilizarAsistencias(List<AsistenciasEmpleadosDTO> lista);
+
+
     }
 }

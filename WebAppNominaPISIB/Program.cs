@@ -12,12 +12,12 @@ builder.Services.AddSwaggerGen();
 // 1er paso Leer la variable de conexión de la base de datos desde el archivo appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("ConeccionBaseNomina");
 // 2do configurar el DbContext para usar la cadena de conexión
-builder.Services.AddDbContext< NominaPISIBContext >opcions=>     opcions.UseSqlServer(connectionString));
+//builder.Services.AddDbContext< NominaPISIBContext >opcions=>     opcions.UseSqlServer(connectionString));
 
 
 // configurar los servicios de la aplicacion
 // 
-builder.Services.AddScoped<NominaPISIB.Aplicacion.Servicios.IEmpleadosServicio, NominaPISIB.Aplicacion.ServiciosImpl.EmpleadosServicioImpl>();
+//builder.Services.AddScoped<NominaPISIB.Aplicacion.Servicios.IEmpleadosServicio, NominaPISIB.Aplicacion.ServiciosImpl.EmpleadosServicioImpl>();
 // configurar los servicios de la aplicacion
 
 // Configure the HTTP request pipeline.
