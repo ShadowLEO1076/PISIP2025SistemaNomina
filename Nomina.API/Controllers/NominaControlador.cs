@@ -16,14 +16,14 @@ namespace Nomina.API.Controllers
         }
 
         // este método es para listar todas las nóminas de los empleados
-        [HttpGet("Listar Nominas Empleados")]
+        [HttpGet("ListarNominasEmpleados")]
         public Task<IEnumerable<Nominas>> GetAllasync()
         {
             return _nominaservicio.GetAllAsync();
         }
 
         // este método obtiene una nómina específica por su ID
-        [HttpGet("Obtener Nomina/{id}")]
+        [HttpGet("ObtenerNomina/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var nomina = await _nominaservicio.GetByIdAsync(id);
@@ -35,7 +35,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método permite agregar una nueva nómina
-        [HttpPost("Agregar Nomina")]
+        [HttpPost("AgregarNomina")]
         public async Task<IActionResult> AddAsync([FromBody] Nominas nomina)
         {
             if (nomina == null)
@@ -55,7 +55,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método permite actualizar una nómina existente
-        [HttpPut("Actualizar Nomina")]
+        [HttpPut("ActualizarNomina")]
         public async Task<IActionResult> UpdateAsync([FromBody] Nominas nomina)
         {
             if (nomina == null)
@@ -75,7 +75,7 @@ namespace Nomina.API.Controllers
         }
 
         // este método elimina una nómina específica por su ID
-        [HttpDelete("Eliminar Nomina/{id}")]
+        [HttpDelete("EliminarNomina/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var nomina = await _nominaservicio.GetByIdAsync(id);

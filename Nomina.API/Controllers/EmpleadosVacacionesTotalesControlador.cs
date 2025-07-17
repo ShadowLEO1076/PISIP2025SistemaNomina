@@ -16,14 +16,14 @@ namespace Nomina.API.Controllers
         }
 
         // Listar todos los registros
-        [HttpGet("Listar Empleados Vacaciones")]
+        [HttpGet("ListarEmpleadosVacaciones")]
         public Task<IEnumerable<EmpleadosVacacionesTotales>> GetAllasync()
         {
             return _empleadosVacacionesTotalesServicio.GetAllAsync();
         }
 
         // Obtener vacaciones totales por ID
-        [HttpGet("Obtener Vacaciones Empleado/{id}")]
+        [HttpGet("ObtenerVacacionesEmpleado/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
 
@@ -38,7 +38,7 @@ namespace Nomina.API.Controllers
         }
 
         // Agregar nuevo registro
-        [HttpPost("Agregar Vacaciones Empleado")]
+        [HttpPost("AgregarVacacionesEmpleado")]
         public async Task<IActionResult> AddAsync([FromBody] EmpleadosVacacionesTotales vacacionesTotales)
         {
             if (vacacionesTotales == null)
@@ -58,7 +58,7 @@ namespace Nomina.API.Controllers
         }
 
         // Actualizar registro
-        [HttpPut("Actualizar Vacaciones Empleado")]
+        [HttpPut("ActualizarVacacionesEmpleado")]
         public async Task<IActionResult> UpdateAsync([FromBody] EmpleadosVacacionesTotales vacacionesTotales)
         {
             if (vacacionesTotales == null)
@@ -78,7 +78,7 @@ namespace Nomina.API.Controllers
         }
 
         // Eliminar registro por ID
-        [HttpDelete("Eliminar Vacaciones Empleado/{id}")]
+        [HttpDelete("EliminarVacacionesEmpleado/{id}")]
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var vacaciones = await _empleadosVacacionesTotalesServicio.GetByIdAsync(id);
