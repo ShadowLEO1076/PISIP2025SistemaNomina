@@ -17,5 +17,7 @@ namespace NominaPISIB.Aplicacion.Servicios
 
         [OperationContract]
         public int ContabilizarInasistencias(List<InasistenciasEmpleadosDTO> lista);
+        public int ContabilizarInasistenciasRemunerables(List<InasistenciasEmpleadosDTO> lista);
+        public int ContabilizarInasistenciasNoRemunerables(List<InasistenciasEmpleadosDTO> lista);
     }
 }
