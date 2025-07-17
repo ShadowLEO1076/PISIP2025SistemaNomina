@@ -2,7 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -18,8 +17,6 @@ public partial class Nominas
 
     public decimal NominaSalarioBase { get; set; }
 
-    public int NominaHorasExtra { get; set; }
-
     public decimal NominaBonificaciones { get; set; }
 
     public decimal NominaDescuentos { get; set; }
@@ -27,6 +24,6 @@ public partial class Nominas
     public decimal NominaSalarioNeto { get; set; }
 
     public DateOnly NominaFechaEmision { get; set; }
-    [JsonIgnore]
+
     public virtual Empleados idEmpleadoNavigation { get; set; }
 }

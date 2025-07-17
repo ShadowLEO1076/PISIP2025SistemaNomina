@@ -2,7 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -13,6 +12,6 @@ public partial class AprobacionVacaciones
     public int? idSolicitudVacacion { get; set; }
 
     public DateOnly? AprobacionVacacionFecha { get; set; }
-    [JsonIgnore]
+
     public virtual SolicitudVacaciones idSolicitudVacacionNavigation { get; set; }
 }
