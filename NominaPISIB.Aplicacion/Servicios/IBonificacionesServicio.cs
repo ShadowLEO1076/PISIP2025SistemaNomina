@@ -13,6 +13,7 @@ namespace NominaPISIB.Aplicacion.Servicios
     public interface IBonificacionesServicio : IService<Bonificaciones>
     {
         [OperationContract]
-        Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+        Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month); // si no funciona es con BonificacionesEmpleadoDTO 
+
     }
 }

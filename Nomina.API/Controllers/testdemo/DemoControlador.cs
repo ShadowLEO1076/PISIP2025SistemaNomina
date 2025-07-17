@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Nomina.API.Controllers
+namespace Nomina.API.Controllers.testdemo
 {
     [ApiController]
     [Route("api/[controller]")]

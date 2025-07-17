@@ -224,7 +224,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
             }
         }
         // para reporte nomina mensual dto
-        /*
+        
         public async Task<List<ReporteNominaMensualDTO>> ObtenerReporteNominaMensual(int mes, int anio)
         {
             try
@@ -290,7 +290,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                 throw new NotImplementedException("no funciona el test leo nomina reporte mensual");
             }    
         }
-        */
+        
         public async Task<List<Empleados>> ObtenerEmpleadosActivos()
         {
             try 

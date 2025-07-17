@@ -14,6 +14,7 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         Task<List<Puestos>> GetAll();
         /*
+        
         [OperationContract]
         Task<bool> RegistrarPuestoAsync(string nombrePuesto, string descripcion, decimal salarioBase);
         [OperationContract]
