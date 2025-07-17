@@ -2,7 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -15,8 +14,8 @@ public partial class Inasistencias
     public DateOnly InasistenciaFecha { get; set; }
 
     public int? InacistenciaContador { get; set; }
-    [JsonIgnore]
+
     public virtual Empleados idEmpleadoNavigation { get; set; }
-    [JsonIgnore]
+
     public virtual Licencias idLicenciaNavigation { get; set; }
 }

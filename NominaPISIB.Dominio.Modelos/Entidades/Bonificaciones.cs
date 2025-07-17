@@ -2,7 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace NominaPISIB.Infraestructura.AccesoDatos;
 
@@ -19,6 +18,6 @@ public partial class Bonificaciones
     public decimal BonificacionMonto { get; set; }
 
     public DateOnly BonificacionFecha { get; set; }
-    [JsonIgnore]
+
     public virtual Empleados idEmpleadoNavigation { get; set; }
 }
