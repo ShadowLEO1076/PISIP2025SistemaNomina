@@ -14,5 +14,8 @@ namespace NominaPISIB.Aplicacion.Servicios
     {
         [OperationContract]
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+
+        [OperationContract]
+        decimal CalcularDescuentosDeEmpleadoPorAnioYMes(List<DescuentosEmpleadosDTO> lista);
     }
 }

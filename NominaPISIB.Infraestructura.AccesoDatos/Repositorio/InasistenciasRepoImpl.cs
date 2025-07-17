@@ -20,7 +20,7 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             {
-                var inasisActuales =
+               return await
                     _context.Inasistencias.Include(i => i.idEmpleadoNavigation).Include(i => i.idLicenciaNavigation)
                     .Where(i => i.idEmpleadoNavigation.EmpleadoNombres == name && i.idEmpleadoNavigation.EmpleadoApellidos == lastname
                     && i.InasistenciaFecha.Year == year && i.InasistenciaFecha.Month == month)
@@ -39,7 +39,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                         }).ToList()
                     }).ToListAsync();
 
-                return await inasisActuales;
             }
             catch (Exception ex) 
             {

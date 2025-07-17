@@ -16,6 +16,9 @@ namespace NominaPISIB.Aplicacion.Servicios
         [OperationContract]
         // usará muchos métodos para al final usar el AddAsync
         public Task InsertarNominaAutomatizado(string name, string lastname, int year, int month);
+
+        [OperationContract]
+        public decimal CalcularSalarioNeto(decimal salaritoBruto, int diasTrabajados);
         /*
         [OperationContract]
         Task<bool> RegistrarNominaAsync(int empleadoId, DateTime fechaPago, decimal monto);

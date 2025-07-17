@@ -20,23 +20,20 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             {
-                var fecha = year;
-
-                var empleados =
+                return await
                     _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname)
                     .Select(dto => new DescuentosEmpleadosDTO
                     {
                         NombresCompletos = dto.EmpleadoNombres + dto.EmpleadoApellidos,
-                        boniYear = fecha,
+                        boniYear = year,
 
-                        Descuentos = dto.Descuentos.Where(d => (d.DescuentoFecha.Year == fecha)).Select(d => new DescuentoDTO
+                        Descuentos = dto.Descuentos.Where(d => (d.DescuentoFecha.Year == year)).Select(d => new DescuentoDTO
                         {
                             descuentoFecha = d.DescuentoFecha,
                             descuentoMonto = d.DescuentoMonto,
                         }).ToList()
                     }).Where(bonoAux => bonoAux.Descuentos.Any()).ToListAsync();
 
-                return await empleados;
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
@@ -62,6 +59,45 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                     }).Where(bonoAux => bonoAux.bonificaciones.Any()).ToListAsync();
 
                 return await empleadosConContratoActual;
+            }
+            catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
+        }
+
+        public async Task<EmpleadosContratoActivoDTO> ObtenerContratoActivoPorEmpleado(string name, string lastname)
+        {
+            try
+            {
+                var hoy = DateOnly.FromDateTime(DateTime.Today);
+
+                return await
+                    _context.Empleados.Where(emp => emp.EmpleadoNombres == name && emp.EmpleadoApellidos == lastname && emp.EmpleadoEstado == "1" | emp.EmpleadoEstado == "Activo")
+                    .Select(e => new EmpleadosContratoActivoDTO
+                    {
+                        NombresCompletos = e.EmpleadoNombres + " " + e.EmpleadoApellidos,
+                        Correo = e.EmpleadoCorreo,
+                        Genero = e.EmpleadoGenero,
+                        FechaIngreso = e.EmpleadoFechaIngreso,
+                        Telefono = e.EmpleadoTelfPersonal,
+
+
+                        FechaInicioContrato = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.FechaInicioContrato)
+                        .FirstOrDefault(),
+
+                        FechaFinContrato = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.ContratoFechaFin)
+                        .FirstOrDefault(),
+
+                        Salario = e.Contratos
+                        .Where(c => c.FechaInicioContrato <= hoy && c.ContratoFechaFin >= hoy)
+                        .OrderByDescending(c => c.FechaInicioContrato)
+                        .Select(c => c.ContratoSalario)
+                        .FirstOrDefault()
+                    }).FirstAsync();
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : No se pudo traer los datos. " + ex.Message); }
         }
@@ -307,14 +343,13 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try
             { 
-                var empleado =
-                    _context.Empleados.Where(e => e.EmpleadoNombres == name && e.EmpleadoApellidos == lastname).FirstOrDefault();
-
-                return empleado;
+                return await
+                    _context.Empleados.Where(e => e.EmpleadoNombres == name && e.EmpleadoApellidos == lastname).FirstOrDefaultAsync();
             }
             catch (Exception ex) { throw new Exception("Error - EmpleadosRepoImpl : no se puede encontrar dato"); }
         }
 
+        
         /* inutilizado, mandado a DescuentoRepoImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)
         {

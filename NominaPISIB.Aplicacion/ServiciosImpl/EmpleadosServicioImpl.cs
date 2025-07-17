@@ -22,6 +22,11 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             _context = context;
             _repo = new EmpleadosRepoImpl(context);
         }
+
+        public async Task<EmpleadosContratoActivoDTO> ObtenerContratoActivoPorEmpleado(string name, string lastname)
+        {
+            return await _repo.ObtenerContratoActivoPorEmpleado(name, lastname);
+        }
         public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnio(string name, string lastname, int year)
         {
             return _repo.ObtenerBonificacionesDeEmpleadoPorAnio(name, lastname, year);
@@ -63,8 +68,14 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
 
         public async Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname)
         {
-            return await _repo.ObtenerEmpleadoPorNombre(name, lastname);
+            try { return await _repo.ObtenerEmpleadoPorNombre(name, lastname); }
+            catch (Exception e) {
+
+                throw new Exception("Error - EmpleadosServicoImpl : no se puede hallar el dato");
+            }
         }
+
+       
 
         /* Inutilizado, mandado a DescuestosServicioImpl
         public async Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month)

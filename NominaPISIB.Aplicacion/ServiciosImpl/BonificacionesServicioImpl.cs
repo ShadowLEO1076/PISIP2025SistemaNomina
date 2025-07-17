@@ -36,7 +36,7 @@ namespace NominaPISIB.Aplicacion.ServiciosImpl
             }
         }
 
-        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMesAsync(List<BonificacionesEmpleadoDTO> lista)
+        public decimal CalcularBonificacionesDeEmpleadoPorAnioYMes(List<BonificacionesEmpleadoDTO> lista)
         {
             decimal totalValor = 0;
 

@@ -21,8 +21,8 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
         {
             try 
             {
-                var boniActual =
-                    _context.Bonificaciones.Include(b => b.idEmpleadoNavigation)
+                return await
+                   _context.Bonificaciones.Include(b => b.idEmpleadoNavigation)
                     .Where(b => b.idEmpleadoNavigation.EmpleadoNombres == name && b.idEmpleadoNavigation.EmpleadoApellidos == lastname &&
                     b.BonificacionFecha.Year == year && b.BonificacionFecha.Month == month).GroupBy(e => new
                     {
@@ -37,7 +37,6 @@ namespace NominaPISIB.Infraestructura.AccesoDatos.Repositorio
                         }).ToList()
                     }).ToListAsync();
 
-                return await boniActual;
             }
             catch(Exception ex) { throw new Exception("Error - BonificacionesRepoImpl : no se pudo hallar los datos. " + ex.Message); }
         }

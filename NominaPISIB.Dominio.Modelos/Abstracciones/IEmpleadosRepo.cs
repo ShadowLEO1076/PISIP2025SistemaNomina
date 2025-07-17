@@ -11,6 +11,7 @@ namespace NominaPISIB.Dominio.Modelos.Abstracciones
     public interface IEmpleadosRepo : IRepository<Empleados>
     {
 
+        public Task<EmpleadosContratoActivoDTO> ObtenerContratoActivoPorEmpleado(string name, string lastname);
         // Nos permitirá traer un entidad del tipo empleado por nombre.
         public Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname);
 

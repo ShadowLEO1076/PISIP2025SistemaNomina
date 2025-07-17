@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using NominaPISIB.Aplicacion.Servicios;
 using NominaPISIB.Aplicacion.ServiciosImpl;
+using NominaPISIB.Dominio.Modelos.Abstracciones;
 using NominaPISIB.Infraestructura.AccesoDatos;
+using NominaPISIB.Infraestructura.AccesoDatos.Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,8 +24,8 @@ builder.Services.AddSwaggerGen();
 
 
 // 1. leer la cadena de conexion del appsettings.json y guardarla en una variable de entorno
-var connectionDB = builder.Configuration.GetConnectionString("DefaultConnection");
-//var connectionDB = builder.Configuration.GetConnectionString("ConnectionMateo");
+//var connectionDB = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionDB = builder.Configuration.GetConnectionString("ConnectionMateo");
 // 2. crear el DbContext global con la cadena de conexion
 builder.Services.AddDbContext<NominaPISIBContext>(options =>
     options.UseSqlServer(connectionDB),ServiceLifetime.Scoped);
@@ -38,6 +40,7 @@ builder.Services.AddScoped<IInasistenciasServicio, InasistenciasServicioImpl>();
 builder.Services.AddScoped<ILicenciasServicio, LicenciasServicioImpl>();
 
 // ahora para Nominas
+builder.Services.AddScoped<INominasRepo, NominasRepoImpl>();
 builder.Services.AddScoped<INominasServicio, NominasServicioImpl>();
 // ahora para puestos
 builder.Services.AddScoped<IPuestosServicio, PuestosServicioImpl>();
@@ -51,7 +54,9 @@ builder.Services.AddScoped<IAprobacionVacacionesServicio, AprobacionVacacionesSe
 builder.Services.AddScoped<IAsistenciasServicio,AsistenciasServicioImpl>();
 // de bonificaciones 
 builder.Services.AddScoped<IBonificacionesServicio, BonificacionesServicioImpl>();
-
+builder.Services.AddScoped<IDescuentosServicio,DescuentosServicioImpl>();
+builder.Services.AddScoped<IInasistenciasServicio, InasistenciasServicioImpl>();
+builder.Services.AddScoped<IEmpleadosServicio, EmpleadosServicioImpl>();
 
 var app = builder.Build();
 

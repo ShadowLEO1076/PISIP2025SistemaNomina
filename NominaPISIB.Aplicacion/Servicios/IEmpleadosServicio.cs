@@ -12,15 +12,17 @@ namespace NominaPISIB.Aplicacion.Servicios
     [ServiceContract]
     public interface IEmpleadosServicio : IService<Empleados>
     {
-        
+
         /* Inutilizada, movida a iDescuestosServicio
         [OperationContract]
         public Task<List<DescuentosEmpleadosDTO>> ObtenerDescuentosDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
         */
-         /*  No usada, movida a Bonificaciones
+        /*  No usada, movida a Bonificaciones
+       [OperationContract]
+       public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
+       */
         [OperationContract]
-        public Task<List<BonificacionesEmpleadoDTO>> ObtenerBonificacionesDeEmpleadoPorAnioYMes(string name, string lastname, int year, int month);
-        */
+        public Task<EmpleadosContratoActivoDTO> ObtenerContratoActivoPorEmpleado(string name, string lastname);
         // hace lo que dice. Ya implementada -> Mateo Vasquez
         [OperationContract]
         public Task<Empleados> ObtenerEmpleadoPorNombre(string name, string lastname);
